@@ -1,0 +1,211 @@
+﻿@page
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin App Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #f1f1f1;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed;
+            height: 100%;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .sidebar h2 {
+                margin-top: 0;
+            }
+
+        .sidebar-item {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+            .sidebar-item a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .sidebar-item:hover {
+                background-color: #ddd;
+            }
+
+            .sidebar-item.back-to-home {
+                margin-top: auto;
+                margin-top: 20px; 
+            }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .button:hover {
+                background-color: #45a049;
+                transform: scale(1.05);
+            }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+            width: calc(100% - 220px);
+            box-sizing: border-box;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: calc(100% - 220px); 
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 220px;
+            z-index: 1; 
+        }
+
+            .header h1 {
+                margin: 0;
+            }
+
+        .content {
+            margin-top: 80px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px); 
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; 
+            position: relative;
+            margin-top: -130px; 
+            margin-left: 180px; 
+        }
+
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: none;
+            z-index: 2;
+        }
+
+        .popup-button {
+            position: relative;
+            display: inline-block;
+        }
+
+            .popup-button:hover .popup {
+                display: block;
+            }
+
+            .popup-button button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+
+                .popup-button button:hover {
+                    background-color: #45a049;
+                    transform: scale(1.05);
+                }
+
+        .popup-content {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>INNOV8</h2>
+        <div class="sidebar-item"><a href="/About">About</a></div>
+        <div class="sidebar-item"><a href="/CreateEditDeleteCourse">Create, Edit, Delete Course</a></div>
+        <div class="sidebar-item"><a href="/AssignLecturer">Assign Lecturer to Course</a></div>
+        <div class="sidebar-item"><a href="/EnrollStudent">Enroll Student</a></div>
+        <div class="sidebar-item back-to-home">
+            <button onclick="location.href='/'" class="button">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Admin: App Settings</h1>
+        </div>
+
+        <div class="content">
+            <div class="button-container">
+                <div class="popup-button">
+                    <button class="button">Change Theme</button>
+                    <div class="popup">
+                        <div class="popup-content">
+                            <p>Select Theme:</p>
+                            <button class="button" onclick="alert('Light Mode')">Light Mode</button>
+                            <button class="button" onclick="alert('Dark Mode')">Dark Mode</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup-button">
+                    <button class="button">Notifications</button>
+                    <div class="popup">
+                        <div class="popup-content">
+                            <p>Toggle Notifications:</p>
+                            <button class="button" onclick="alert('Notifications On')">On</button>
+                            <button class="button" onclick="alert('Notifications Off')">Off</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

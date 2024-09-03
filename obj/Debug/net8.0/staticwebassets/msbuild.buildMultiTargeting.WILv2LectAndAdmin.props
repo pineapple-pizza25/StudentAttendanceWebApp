@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\WILv2LectAndAdmin.props" />
+</Project>

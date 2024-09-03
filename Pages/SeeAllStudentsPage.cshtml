@@ -1,0 +1,172 @@
+﻿@page
+
+<div class="container">
+    <div class="sidebar">
+        <h2>INNOV8</h2>
+        <div class="sidebar-item"><a href="/StudentInformationPage">My Classes</a></div>
+        <div class="sidebar-item"><a href="/Students">Students</a></div>
+        <div class="sidebar-item"><a href="/Settings">Settings</a></div>
+        <div class="sidebar-item back-to-home">
+            <button onclick="location.href='/'" class="button">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>See All Students</h1>
+        </div>
+
+        <div class="results-container">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Module</th>
+                        <th>Date</th>
+                        <th>Attendance Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example rows change it if we need to -->
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Module 1</td>
+                        <td>2024-08-28</td>
+                        <td>Attended</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>Module 2</td>
+                        <td>2024-08-27</td>
+                        <td>Absent</td>
+                    </tr>
+                    <tr>
+                        <td>Michael Brown</td>
+                        <td>Module 3</td>
+                        <td>2024-08-26</td>
+                        <td>Left Early</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="back-button-container">
+            <button class="button" onclick="location.href='/StudentInformationPage'">Back to Student Page</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .container {
+        display: flex;
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 220px;
+        background-color: #f1f1f1;
+        padding: 20px;
+        box-sizing: border-box;
+        position: fixed;
+        height: 100%;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .sidebar h2 {
+            margin-top: 0;
+        }
+
+    .sidebar-item {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+        .sidebar-item a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar-item:hover {
+            background-color: #ddd;
+        }
+
+    .back-to-home {
+        margin-top: auto; /* Pushes this item to the bottom */
+        margin-top: 20px;
+    }
+
+    .button {
+        background-color: #4CAF50; /* Green background */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px 0;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Add a subtle shadow for 3D effect */
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+        .button:hover {
+            background-color: #45a049; /* Slightly darker green on hover */
+        }
+
+    .main-content {
+        margin-left: 220px;
+        padding: 20px;
+        width: calc(100% - 220px);
+        box-sizing: border-box;
+    }
+
+    .header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .results-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .results-table {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 800px;
+    }
+
+        .results-table th, .results-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .results-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    .back-button-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+</style>

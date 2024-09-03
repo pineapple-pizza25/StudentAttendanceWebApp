@@ -1,0 +1,79 @@
+﻿@page
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Home</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; 
+        }
+
+        .header {
+            background-color: #4CAF50; 
+            color: white;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 60px); 
+            margin-top: 1px;
+        }
+
+        .button {
+            background-color: #4CAF50; 
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .button:hover {
+                background-color: #45a049; 
+                transform: scale(1.05); 
+            }
+
+            .button.back-to-home {
+                background-color: #555; 
+            }
+
+                .button.back-to-home:hover {
+                    background-color: #333; 
+                }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome Admin</h1>
+    </div>
+
+    <div class="main-content">
+        <button class="button" onclick="location.href='/UserManagement'">User Management</button>
+        <button class="button" onclick="location.href='/CourseManagement'">Course Management</button>
+        <button class="button back-to-home" onclick="location.href='/'">Back to Home</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "WILv2LectAndAdmin/1.0.0": {
+        "runtime": {
+          "WILv2LectAndAdmin.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WILv2LectAndAdmin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

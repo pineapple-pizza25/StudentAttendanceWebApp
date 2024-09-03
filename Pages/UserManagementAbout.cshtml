@@ -1,0 +1,142 @@
+﻿@page
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #f1f1f1;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed;
+            height: 100%;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .sidebar h2 {
+                margin-top: 0;
+            }
+
+        .sidebar-item {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+            .sidebar-item a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .sidebar-item:hover {
+                background-color: #ddd;
+            }
+
+            .sidebar-item.back-to-home {
+                margin-top: auto; 
+                margin-top: 20px;
+            }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .button:hover {
+                background-color: #45a049;
+                transform: scale(1.05);
+            }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 0;
+            width: calc(100% - 220px);
+            box-sizing: border-box;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: calc(100% - 220px); 
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 220px;
+            z-index: 1; 
+        }
+
+            .header h1 {
+                margin: 0;
+                font-size: 36px;
+            }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 80px);
+            margin-top: 40px;
+        }
+
+            .content p {
+                font-size: 24px;
+                font-weight: bold;
+                margin: 20px 0;
+                text-align: center;
+            }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>INNOV8</h2>
+        <div class="sidebar-item"><a href="/About">About</a></div>
+        <div class="sidebar-item"><a href="/Students">Student</a></div>
+        <div class="sidebar-item"><a href="/Lecturers">Lecturer</a></div>
+        <div class="sidebar-item"><a href="/Settings">Settings</a></div>
+        <div class="sidebar-item back-to-home">
+            <button onclick="location.href='/'" class="button">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>User Management</h1>
+        </div>
+
+        <div class="content">
+            <p>You may now create, edit or delete student or lecturer information!</p>
+        </div>
+    </div>
+</body>
+</html>

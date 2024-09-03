@@ -1,0 +1,187 @@
+﻿@page
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enroll Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #f1f1f1;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed;
+            height: 100%;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .sidebar h2 {
+                margin-top: 0;
+            }
+
+        .sidebar-item {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+            .sidebar-item a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .sidebar-item:hover {
+                background-color: #ddd;
+            }
+
+            .sidebar-item.back-to-home {
+                margin-top: auto; 
+                margin-top: 20px; 
+            }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .button:hover {
+                background-color: #45a049;
+                transform: scale(1.05);
+            }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+            width: calc(100% - 220px);
+            box-sizing: border-box;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: calc(100% - 220px); 
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 220px;
+            z-index: 1;
+        }
+
+            .header h1 {
+                margin: 0;
+            }
+
+        .content {
+            margin-top: 80px;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .form-group input, .form-group select {
+                width: 100%;
+                padding: 8px;
+                font-size: 16px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>INNOV8</h2>
+        <div class="sidebar-item"><a href="/About">About</a></div>
+        <div class="sidebar-item"><a href="/CreateEditDeleteCourse">Create, Edit, Delete Course</a></div>
+        <div class="sidebar-item"><a href="/AssignLecturer">Assign Lecturer to Course</a></div>
+        <div class="sidebar-item"><a href="/EnrollStudent">Enroll Student</a></div>
+        <div class="sidebar-item"><a href="/Settings">Settings</a></div> 
+        <div class="sidebar-item back-to-home">
+            <button onclick="location.href='/'" class="button">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Enroll Student</h1>
+        </div>
+
+        <div class="content">
+            <form>
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Select Course:</label>
+                    <select id="course" name="course" required>
+                        <option value="">-- Select Course --</option>
+                        <!-- Sample options change if we need to -->
+                        <option value="course1">Introduction to Programming</option>
+                        <option value="course2">Advanced Mathematics</option>
+                    </select>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit" class="button">Enroll Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

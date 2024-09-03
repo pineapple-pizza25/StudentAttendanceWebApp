@@ -1,0 +1,147 @@
+﻿@page
+
+<div class="container">
+    <div class="sidebar">
+        <h2>INNOV8</h2>
+        <div class="sidebar-item"><a href="/MyClasses">My Classes</a></div>
+        <div class="sidebar-item"><a href="/Students">Students</a></div>
+        <div class="sidebar-item"><a href="/Settings">Settings</a></div>
+        <div class="sidebar-item back-to-home">
+            <button onclick="location.href='/'" class="button">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Lecturer: My Profile</h1>
+        </div>
+
+        <div class="profile-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="input-field">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="input-field">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="input-field">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" class="input-field">
+
+            <button class="button">Save Changes</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .container {
+        display: flex;
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 220px;
+        background-color: #f1f1f1;
+        padding: 20px;
+        box-sizing: border-box;
+        position: fixed;
+        height: 100%;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .sidebar h2 {
+            margin-top: 0;
+        }
+
+    .sidebar-item {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+        .sidebar-item a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar-item:hover {
+            background-color: #ddd;
+        }
+
+    .back-to-home {
+        margin-top: auto; 
+        margin-top: 20px;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px 0;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        transition: background-color 0.3s ease;
+    }
+
+        .button:hover {
+            background-color: #45a049; 
+        }
+
+    .main-content {
+        margin-left: 220px;
+        padding: 20px;
+        width: calc(100% - 220px);
+        box-sizing: border-box;
+    }
+
+    .header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: calc(100% - 220px); 
+        box-sizing: border-box;
+        margin-left: 220px;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .profile-form {
+        display: flex;
+        flex-direction: column;
+        max-width: 600px;
+        margin: 100px auto 0 auto; 
+    }
+
+        .profile-form label {
+            margin: 10px 0 5px;
+        }
+
+    .input-field {
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+</style>

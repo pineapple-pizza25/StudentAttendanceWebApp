@@ -1,0 +1,189 @@
+﻿@page
+@model LecturerRegisterModel
+@{
+    ViewData["Title"] = "Lecturer Register";
+}
+
+<div class="container">
+    <div class="sidebar">
+        <h2>INNOV8</h2>
+        <div class="sidebar-item"><a asp-page="/AdminRegister">Admin Register</a></div>
+        <div class="sidebar-item"><a asp-page="/LecturerRegister">Lecturer Register</a></div>
+        <div class="sidebar-item back-to-home">
+            <button onclick="location.href='/'" class="button">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Lecturer Register</h1>
+        </div>
+        <div class="register-info">
+            <h2>Create an Account</h2>
+            <form method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required />
+                </div>
+                <div class="form-group">
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+            <p>Already have an account? <a asp-page="/LecturerLogin">Log In</a></p>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .container {
+        display: flex;
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 220px;
+        background-color: #f1f1f1;
+        padding: 20px;
+        box-sizing: border-box;
+        position: fixed;
+        height: 100%;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .sidebar h2 {
+            margin-top: 0;
+        }
+
+    .sidebar-item {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+        .sidebar-item a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar-item:hover {
+            background-color: #ddd;
+        }
+
+    .back-to-home {
+        margin-top: auto; 
+        margin-top: 20px;
+    }
+
+    .button {
+        background-color: #4CAF50; 
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease; 
+    }
+
+        .button:hover {
+            background-color: #45a049; 
+        }
+
+    .main-content {
+        margin-left: 220px; 
+        padding: 20px;
+        width: calc(100% - 220px);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        position: fixed;
+        top: 0;
+        left: 220px; 
+        z-index: 1000;
+    }
+
+    .register-info {
+        margin-top: 100px;
+        color: #4CAF50;
+        max-width: 500px; 
+        width: 100%;
+        padding-left: 20px; 
+        padding-right: 20px; 
+    }
+
+        .register-info h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: left; 
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+            .form-group button:hover {
+                background-color: #45a049;
+            }
+
+    .register-info p {
+        margin-top: 20px;
+        text-align: center;
+    }
+</style>

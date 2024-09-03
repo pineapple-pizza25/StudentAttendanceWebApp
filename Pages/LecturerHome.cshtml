@@ -1,0 +1,156 @@
+﻿@page
+@{
+    ViewData["Title"] = "Lecturer Home";
+}
+
+<div class="container">
+    <div class="sidebar">
+        <h2>INNOV8</h2>
+        <div class="sidebar-item"><a asp-page="/LecturerHome">My Classes</a></div>
+        <div class="sidebar-item"><a asp-page="/Students">Students</a></div>
+        <div class="sidebar-item"><a asp-page="/Settings">Settings</a></div>
+        <div class="sidebar-item back-to-home">
+            <button onclick="location.href='/'" class="button">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Hello Lecturer!</h1>
+        </div>
+        <div class="content">
+            <h2>Your Classes</h2>
+            <div class="class-list">
+                <!-- Change if we need to -->
+                <button class="class-button">Class 1</button>
+                <button class="class-button">Class 2</button>
+                <button class="class-button">Class 3</button>
+                <button class="class-button">Class 4</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .container {
+        display: flex;
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 220px;
+        background-color: #f1f1f1;
+        padding: 20px;
+        box-sizing: border-box;
+        position: fixed;
+        height: 100%;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .sidebar h2 {
+            margin-top: 0;
+        }
+
+    .sidebar-item {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+        .sidebar-item a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar-item:hover {
+            background-color: #ddd;
+        }
+
+    .back-to-home {
+        margin-top: auto;
+        margin-top: 20px;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease;
+    }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+    .main-content {
+        margin-left: 220px;
+        padding: 20px;
+        width: calc(100% - 220px);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        position: fixed;
+        top: 0;
+        left: 220px;
+        z-index: 1000;
+    }
+
+    .content {
+        margin-top: 80px; 
+        padding: 20px;
+    }
+
+    .class-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .class-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-size: 18px;
+        margin: 10px 0;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease;
+    }
+
+        .class-button:hover {
+            background-color: #45a049;
+        }
+</style>
