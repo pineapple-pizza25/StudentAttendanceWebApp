@@ -102,3 +102,4 @@ C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\obj\
 C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\obj\Debug\net8.0\StudentAttendanceWebApp.pdb
 C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\obj\Debug\net8.0\StudentAttendanceWebApp.genruntimeconfig.cache
 C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\obj\Debug\net8.0\ref\StudentAttendanceWebApp.dll
+C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\obj\Debug\net8.0\StudentAttendanceWebApp.sourcelink.json
