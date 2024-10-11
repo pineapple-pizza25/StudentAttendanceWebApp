@@ -1,113 +1,163 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using StudentAttendanceWebApp.Models;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentAttendanceWebApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class StudentController : ControllerBase
+    public class StudentController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HttpClient _httpClient;
 
-        public StudentController(ApplicationDbContext context)
+        public StudentController(HttpClient httpClient)
         {
-            _context = context;
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri("https://faceon-api.calmwave-03f9df68.southafricanorth.azurecontainerapps.io/api/");
         }
 
-        // GET: api/Student
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
+        // GET: /Student
+        public async Task<IActionResult> Index()
         {
-            return await _context.Students
-                .Include(s => s.Campus) // Include related Campus entity
-                .Include(s => s.Attendances) // Include related Attendances
-                .Include(s => s.StudentCourses) // Include related StudentCourses
-                .Include(s => s.StudentSubjects) // Include related StudentSubjects
-                .ToListAsync();
-        }
-
-        // GET: api/Student/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Student>> GetStudent(string id)
-        {
-            var student = await _context.Students
-                .Include(s => s.Campus)
-                .Include(s => s.Attendances)
-                .Include(s => s.StudentCourses)
-                .Include(s => s.StudentSubjects)
-                .FirstOrDefaultAsync(s => s.StudentId == id);
-
-            if (student == null)
-            {
-                return NotFound();
-            }
-
-            return student;
-        }
-
-        // PUT: api/Student/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutStudent(string id, Student student)
-        {
-            if (id != student.StudentId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(student).State = EntityState.Modified;
+            Console.Write("We're testing this controller");
 
             try
             {
-                await _context.SaveChangesAsync();
+                var requestUri = _httpClient.BaseAddress + "Student";
+                Console.WriteLine($"Requesting: {requestUri}");
+
+                var response = await _httpClient.GetAsync("Student");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+
+                    if (!string.IsNullOrEmpty(jsonResponse))
+                    {
+                        var students = JsonConvert.DeserializeObject<List<Student>>(jsonResponse);
+
+                        return View(students);
+                    }
+                }
+
+                ModelState.AddModelError("", "Could not retrieve data from the API.");
+                return View(new List<Student>());
             }
-            catch (DbUpdateConcurrencyException)
+            catch (HttpRequestException ex)
             {
-                if (!StudentExists(id))
+                Console.WriteLine($"HTTP Request Exception: {ex.Message}");
+                ModelState.AddModelError("", $"An error occurred while sending the request: {ex.Message}");
+                return View(new List<Student>());
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"An error occurred: {ex.Message}");
+                return View(new List<Student>());
+            }
+        }
+
+        // GET: /Student/Details/5
+        public async Task<IActionResult> Details(string id)
+        {
+            var response = await _httpClient.GetAsync($"students/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                var student = JsonConvert.DeserializeObject<Student>(jsonResponse);
+                return View(student);
+            }
+            return NotFound();
+        }
+
+        // GET: /Student/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: /Student/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("StudentId,FirstName,LastName,PhoneNumber,Email,DateOfBirth,CampusId")] Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                var jsonContent = JsonConvert.SerializeObject(student);
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("students", content);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
+                    return RedirectToAction(nameof(Index));
                 }
             }
-
-            return NoContent();
+            return View(student);
         }
 
-        // POST: api/Student
+        // GET: /Student/Edit/5
+        public async Task<IActionResult> Edit(string id)
+        {
+            var response = await _httpClient.GetAsync($"students/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                var student = JsonConvert.DeserializeObject<Student>(jsonResponse);
+                return View(student);
+            }
+            return NotFound();
+        }
+
+        // POST: /Student/Edit/5
         [HttpPost]
-        public async Task<ActionResult<Student>> PostStudent(Student student)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, [Bind("StudentId,FirstName,LastName,PhoneNumber,Email,DateOfBirth,CampusId")] Student student)
         {
-            _context.Students.Add(student);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetStudent", new { id = student.StudentId }, student);
-        }
-
-        // DELETE: api/Student/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStudent(string id)
-        {
-            var student = await _context.Students.FindAsync(id);
-            if (student == null)
+            if (id != student.StudentId)
             {
                 return NotFound();
             }
 
-            _context.Students.Remove(student);
-            await _context.SaveChangesAsync();
+            if (ModelState.IsValid)
+            {
+                var jsonContent = JsonConvert.SerializeObject(student);
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PutAsync($"students/{id}", content);
 
-            return NoContent();
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            return View(student);
         }
 
-        private bool StudentExists(string id)
+        // GET: /Student/Delete/5
+        public async Task<IActionResult> Delete(string id)
         {
-            return _context.Students.Any(e => e.StudentId == id);
+            var response = await _httpClient.GetAsync($"students/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                var student = JsonConvert.DeserializeObject<Student>(jsonResponse);
+                return View(student);
+            }
+            return NotFound();
+        }
+
+        // POST: /Student/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            var response = await _httpClient.DeleteAsync($"students/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return NotFound();
         }
     }
 }

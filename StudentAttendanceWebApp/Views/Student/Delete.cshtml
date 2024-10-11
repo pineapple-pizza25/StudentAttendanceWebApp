@@ -1,0 +1,51 @@
+﻿@model StudentAttendanceWebApp.Models.Student
+
+<div class="container">
+    <div class="sidebar">
+        <h2>INNOV8</h2>
+        <div class="sidebar-item"><a href="/StudentInformationPage">My Classes</a></div>
+        <div class="sidebar-item"><a href="/Students">Students</a></div>
+        <div class="sidebar-item"><a href="/Settings">Settings</a></div>
+        <div class="sidebar-item back-to-home">
+            <button onclick="location.href='/'" class="button">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Delete Student</h1>
+        </div>
+
+        <div class="confirmation-container">
+            <h2>Are you sure you want to delete this student?</h2>
+
+            <div class="student-details">
+                <p><strong>First Name:</strong> @Model.FirstName</p>
+                <p><strong>Last Name:</strong> @Model.LastName</p>
+                <p><strong>Phone Number:</strong> @Model.PhoneNumber</p>
+                <p><strong>Email:</strong> @Model.Email</p>
+                <p><strong>Date of Birth:</strong> @Model.DateOfBirth.ToShortDateString()</p>
+                <p><strong>Campus:</strong> @Model.Campus.CampusName</p>
+            </div>
+
+            <form asp-action="DeleteConfirmed" method="post">
+                <input type="hidden" asp-for="StudentId" />
+                <div class="form-actions">
+                    <button type="submit" class="button delete-button">Delete</button>
+                    <button type="button" class="button cancel-button" onclick="location.href='/Students'">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Same styles as before */
+    .delete-button {
+        background-color: #f44336;
+    }
+
+        .delete-button:hover {
+            background-color: #d32f2f;
+        }
+</style>

@@ -1,0 +1,70 @@
+﻿@model StudentAttendanceWebApp.Models.Student
+
+<div class="container">
+    <div class="sidebar">
+        <h2>INNOV8</h2>
+        <div class="sidebar-item"><a href="/StudentInformationPage">My Classes</a></div>
+        <div class="sidebar-item"><a href="/Students">Students</a></div>
+        <div class="sidebar-item"><a href="/Settings">Settings</a></div>
+        <div class="sidebar-item back-to-home">
+            <button onclick="location.href='/'" class="button">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Edit Student</h1>
+        </div>
+
+        <div class="form-container">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="StudentId" />
+
+                <div class="form-group">
+                    <label for="FirstName">First Name:</label>
+                    <input asp-for="FirstName" class="form-control" placeholder="Enter first name" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="LastName">Last Name:</label>
+                    <input asp-for="LastName" class="form-control" placeholder="Enter last name" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="PhoneNumber">Phone Number:</label>
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="Enter phone number" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Email">Email:</label>
+                    <input asp-for="Email" class="form-control" placeholder="Enter email address" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="DateOfBirth">Date of Birth:</label>
+                    <input asp-for="DateOfBirth" type="date" class="form-control" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="CampusId">Campus:</label>
+                    <select asp-for="CampusId" class="form-control" asp-items="ViewBag.Campuses"></select>
+                    <span asp-validation-for="CampusId" class="text-danger"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="button">Save Changes</button>
+                    <button type="button" class="button cancel-button" onclick="location.href='/Students'">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Same styles as before */
+</style>

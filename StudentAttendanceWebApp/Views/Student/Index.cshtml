@@ -1,0 +1,172 @@
+﻿@model IEnumerable<StudentAttendanceWebApp.Models.Student>
+
+<div class="container">
+    <div class="sidebar">
+        <h2>INNOV8</h2>
+        <div class="sidebar-item"><a href="/StudentInformationPage">My Classes</a></div>
+        <div class="sidebar-item"><a href="/Students">Students</a></div>
+        <div class="sidebar-item"><a href="/Settings">Settings</a></div>
+        <div class="sidebar-item back-to-home">
+            <button onclick="location.href='/'" class="button">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>All Students</h1>
+        </div>
+
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Date of Birth</th>
+                    <th>Campus</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model)
+                {
+                    <tr>
+                        <td>@student.FirstName</td>
+                        <td>@student.LastName</td>
+                        <td>@student.PhoneNumber</td>
+                        <td>@student.Email</td>
+                        <td>@student.DateOfBirth.ToShortDateString()</td>
+                        <td>@student.Campus.CampusName</td>
+                        <td>
+                            <a href="/Students/Edit/@student.StudentId">Edit</a> |
+                            <a href="/Students/Details/@student.StudentId">Details</a> |
+                            <a href="/Students/Delete/@student.StudentId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .container {
+        display: flex;
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 220px;
+        background-color: #f1f1f1;
+        padding: 20px;
+        box-sizing: border-box;
+        position: fixed;
+        height: 100%;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .sidebar h2 {
+            margin-top: 0;
+        }
+
+    .sidebar-item {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+        .sidebar-item a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar-item:hover {
+            background-color: #ddd;
+        }
+
+    .back-to-home {
+        margin-top: auto;
+        margin-top: 20px;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px 0;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+    .main-content {
+        margin-left: 220px;
+        padding: 20px;
+        width: calc(100% - 220px);
+        box-sizing: border-box;
+    }
+
+
+
+    .header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: 100px; /* Adjust height as needed */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .student-list-container {
+        margin-top: 20px;
+    }
+
+    .student-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .student-table th, .student-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .student-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .student-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .student-table tr:hover {
+            background-color: #ddd;
+        }
+</style>
