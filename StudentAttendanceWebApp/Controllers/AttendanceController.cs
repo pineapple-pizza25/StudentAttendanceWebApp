@@ -1,48 +1,60 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using StudentAttendanceWebApp.Models;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentAttendanceWebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AttendanceController : ControllerBase
+    public class AttendanceController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HttpClient _httpClient;
 
-        public AttendanceController(ApplicationDbContext context)
+        public AttendanceController(HttpClient httpClient)
         {
-            _context = context;
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri("https://faceon-api.calmwave-03f9df68.southafricanorth.azurecontainerapps.io/api/");
         }
 
         // GET: api/Attendance
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Attendance>>> GetAttendances()
         {
-            return await _context.Attendances
-                .Include(a => a.Lesson)
-                .Include(a => a.Student)
-                .ToListAsync();
+            var response = await _httpClient.GetAsync("attendances");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var attendances = JsonConvert.DeserializeObject<IEnumerable<Attendance>>(data);
+
+            return Ok(attendances);
         }
 
         // GET: api/Attendance/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Attendance>> GetAttendance(int id)
         {
-            var attendance = await _context.Attendances
-                .Include(a => a.Lesson)
-                .Include(a => a.Student)
-                .FirstOrDefaultAsync(a => a.Id == id);
+            var response = await _httpClient.GetAsync($"attendances/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var attendance = JsonConvert.DeserializeObject<Attendance>(data);
 
             if (attendance == null)
             {
                 return NotFound();
             }
 
-            return attendance;
+            return Ok(attendance);
         }
 
         // PUT: api/Attendance/5
@@ -54,22 +66,12 @@ namespace StudentAttendanceWebApp.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(attendance).State = EntityState.Modified;
+            var content = new StringContent(JsonConvert.SerializeObject(attendance), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"attendances/{id}", content);
 
-            try
+            if (!response.IsSuccessStatusCode)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AttendanceExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode((int)response.StatusCode);
             }
 
             return NoContent();
@@ -79,31 +81,32 @@ namespace StudentAttendanceWebApp.Controllers
         [HttpPost]
         public async Task<ActionResult<Attendance>> PostAttendance(Attendance attendance)
         {
-            _context.Attendances.Add(attendance);
-            await _context.SaveChangesAsync();
+            var content = new StringContent(JsonConvert.SerializeObject(attendance), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("attendances", content);
 
-            return CreatedAtAction("GetAttendance", new { id = attendance.Id }, attendance);
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var createdAttendance = JsonConvert.DeserializeObject<Attendance>(data);
+
+            return CreatedAtAction("GetAttendance", new { id = createdAttendance.Id }, createdAttendance);
         }
 
         // DELETE: api/Attendance/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAttendance(int id)
         {
-            var attendance = await _context.Attendances.FindAsync(id);
-            if (attendance == null)
+            var response = await _httpClient.DeleteAsync($"attendances/{id}");
+
+            if (!response.IsSuccessStatusCode)
             {
-                return NotFound();
+                return StatusCode((int)response.StatusCode);
             }
 
-            _context.Attendances.Remove(attendance);
-            await _context.SaveChangesAsync();
-
             return NoContent();
-        }
-
-        private bool AttendanceExists(int id)
-        {
-            return _context.Attendances.Any(e => e.Id == id);
         }
     }
 }

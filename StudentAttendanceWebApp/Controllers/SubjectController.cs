@@ -1,52 +1,59 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using StudentAttendanceWebApp.Models;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentAttendanceWebApp.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class SubjectController : ControllerBase
+    public class SubjectController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HttpClient _httpClient;
 
-        public SubjectController(ApplicationDbContext context)
+        public SubjectController(HttpClient httpClient)
         {
-            _context = context;
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri("https://faceon-api.calmwave-03f9df68.southafricanorth.azurecontainerapps.io/api/");
         }
 
         // GET: api/Subject
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Subject>>> GetSubjects()
+        public async Task<IActionResult> GetSubjects()
         {
-            return await _context.Subjects
-                .Include(s => s.Course) // Include related Course entity
-                .Include(s => s.Lessons) // Include related Lessons
-                .Include(s => s.StudentCourses) // Include related StudentCourses
-                .Include(s => s.StudentSubjects) // Include related StudentSubjects
-                .ToListAsync();
+            var response = await _httpClient.GetAsync("subjects");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode, "Error retrieving subjects from API");
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var subjects = JsonConvert.DeserializeObject<IEnumerable<Subject>>(data);
+
+            return Ok(subjects); // Return the list of subjects
         }
 
         // GET: api/Subject/5
         [HttpGet("{code}")]
-        public async Task<ActionResult<Subject>> GetSubject(string code)
+        public async Task<IActionResult> GetSubject(string code)
         {
-            var subject = await _context.Subjects
-                .Include(s => s.Course)
-                .Include(s => s.Lessons)
-                .Include(s => s.StudentCourses)
-                .Include(s => s.StudentSubjects)
-                .FirstOrDefaultAsync(s => s.SubjectCode == code);
+            var response = await _httpClient.GetAsync($"subjects/{code}");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode, "Error retrieving the subject");
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var subject = JsonConvert.DeserializeObject<Subject>(data);
 
             if (subject == null)
             {
                 return NotFound();
             }
 
-            return subject;
+            return Ok(subject); // Return the subject details
         }
 
         // PUT: api/Subject/5
@@ -58,22 +65,12 @@ namespace StudentAttendanceWebApp.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(subject).State = EntityState.Modified;
+            var content = new StringContent(JsonConvert.SerializeObject(subject), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"subjects/{code}", content);
 
-            try
+            if (!response.IsSuccessStatusCode)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SubjectExists(code))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode((int)response.StatusCode, "Error updating the subject");
             }
 
             return NoContent();
@@ -81,33 +78,34 @@ namespace StudentAttendanceWebApp.Controllers
 
         // POST: api/Subject
         [HttpPost]
-        public async Task<ActionResult<Subject>> PostSubject(Subject subject)
+        public async Task<IActionResult> PostSubject(Subject subject)
         {
-            _context.Subjects.Add(subject);
-            await _context.SaveChangesAsync();
+            var content = new StringContent(JsonConvert.SerializeObject(subject), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("subjects", content);
 
-            return CreatedAtAction("GetSubject", new { code = subject.SubjectCode }, subject);
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode, "Error creating the subject");
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var createdSubject = JsonConvert.DeserializeObject<Subject>(data);
+
+            return CreatedAtAction(nameof(GetSubject), new { code = createdSubject.SubjectCode }, createdSubject);
         }
 
         // DELETE: api/Subject/5
         [HttpDelete("{code}")]
         public async Task<IActionResult> DeleteSubject(string code)
         {
-            var subject = await _context.Subjects.FindAsync(code);
-            if (subject == null)
+            var response = await _httpClient.DeleteAsync($"subjects/{code}");
+
+            if (!response.IsSuccessStatusCode)
             {
-                return NotFound();
+                return StatusCode((int)response.StatusCode, "Error deleting the subject");
             }
 
-            _context.Subjects.Remove(subject);
-            await _context.SaveChangesAsync();
-
             return NoContent();
-        }
-
-        private bool SubjectExists(string code)
-        {
-            return _context.Subjects.Any(e => e.SubjectCode == code);
         }
     }
 }

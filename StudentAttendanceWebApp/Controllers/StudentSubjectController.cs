@@ -1,109 +1,166 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using StudentAttendanceWebApp.Models;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentAttendanceWebApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class StudentSubjectController : ControllerBase
+    [Route("StudentSubject")]
+    public class StudentSubjectController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HttpClient _httpClient;
 
-        public StudentSubjectController(ApplicationDbContext context)
+        public StudentSubjectController(HttpClient httpClient)
         {
-            _context = context;
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri("https://faceon-api.calmwave-03f9df68.southafricanorth.azurecontainerapps.io/api/");
         }
 
-        // GET: api/StudentSubject
+        // GET: StudentSubject
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<StudentSubject>>> GetStudentSubjects()
+        public async Task<IActionResult> Index()
         {
-            return await _context.StudentSubjects
-                .Include(ss => ss.Student) // Include related Student entity
-                .Include(ss => ss.SubjectCodeNavigation) // Include related Subject entity
-                .ToListAsync();
+            var response = await _httpClient.GetAsync("studentsubjects");
+            if (!response.IsSuccessStatusCode)
+            {
+                return View("Error"); // Return an error view if the API call fails
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var studentSubjects = JsonConvert.DeserializeObject<IEnumerable<StudentSubject>>(data);
+
+            return View(studentSubjects); // Return the data to a view
         }
 
-        // GET: api/StudentSubject/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<StudentSubject>> GetStudentSubject(int id)
+        // GET: StudentSubject/Details/5
+        [HttpGet("Details/{id}")]
+        public async Task<IActionResult> Details(int id)
         {
-            var studentSubject = await _context.StudentSubjects
-                .Include(ss => ss.Student)
-                .Include(ss => ss.SubjectCodeNavigation)
-                .FirstOrDefaultAsync(ss => ss.Id == id);
+            var response = await _httpClient.GetAsync($"studentsubjects/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                return View("Error");
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var studentSubject = JsonConvert.DeserializeObject<StudentSubject>(data);
 
             if (studentSubject == null)
             {
                 return NotFound();
             }
 
-            return studentSubject;
+            return View(studentSubject); // Return the details view
         }
 
-        // PUT: api/StudentSubject/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutStudentSubject(int id, StudentSubject studentSubject)
+        // GET: StudentSubject/Create
+        [HttpGet("Create")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: StudentSubject/Create
+        [HttpPost("Create")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,StudentId,SubjectCode")] StudentSubject studentSubject)
+        {
+            if (ModelState.IsValid)
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(studentSubject), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("studentsubjects", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(Index)); // Redirect to index after successful creation
+                }
+            }
+
+            return View(studentSubject);
+        }
+
+        // GET: StudentSubject/Edit/5
+        [HttpGet("Edit/{id}")]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var response = await _httpClient.GetAsync($"studentsubjects/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                return View("Error");
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var studentSubject = JsonConvert.DeserializeObject<StudentSubject>(data);
+
+            if (studentSubject == null)
+            {
+                return NotFound();
+            }
+
+            return View(studentSubject); // Return the edit view
+        }
+
+        // POST: StudentSubject/Edit/5
+        [HttpPost("Edit/{id}")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,StudentId,SubjectCode")] StudentSubject studentSubject)
         {
             if (id != studentSubject.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(studentSubject).State = EntityState.Modified;
+            if (ModelState.IsValid)
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(studentSubject), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PutAsync($"studentsubjects/{id}", content);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StudentSubjectExists(id))
+                if (response.IsSuccessStatusCode)
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
+                    return RedirectToAction(nameof(Index));
                 }
             }
 
-            return NoContent();
+            return View(studentSubject);
         }
 
-        // POST: api/StudentSubject
-        [HttpPost]
-        public async Task<ActionResult<StudentSubject>> PostStudentSubject(StudentSubject studentSubject)
+        // GET: StudentSubject/Delete/5
+        [HttpGet("Delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            _context.StudentSubjects.Add(studentSubject);
-            await _context.SaveChangesAsync();
+            var response = await _httpClient.GetAsync($"studentsubjects/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                return View("Error");
+            }
 
-            return CreatedAtAction("GetStudentSubject", new { id = studentSubject.Id }, studentSubject);
-        }
+            var data = await response.Content.ReadAsStringAsync();
+            var studentSubject = JsonConvert.DeserializeObject<StudentSubject>(data);
 
-        // DELETE: api/StudentSubject/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStudentSubject(int id)
-        {
-            var studentSubject = await _context.StudentSubjects.FindAsync(id);
             if (studentSubject == null)
             {
                 return NotFound();
             }
 
-            _context.StudentSubjects.Remove(studentSubject);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return View(studentSubject); // Return the delete view
         }
 
-        private bool StudentSubjectExists(int id)
+        // POST: StudentSubject/Delete/5
+        [HttpPost("Delete/{id}"), ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            return _context.StudentSubjects.Any(e => e.Id == id);
+            var response = await _httpClient.DeleteAsync($"studentsubjects/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View("Error");
         }
     }
 }

@@ -1,52 +1,60 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using StudentAttendanceWebApp.Models;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentAttendanceWebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LessonController : ControllerBase
+    public class LessonController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HttpClient _httpClient;
 
-        public LessonController(ApplicationDbContext context)
+        public LessonController(HttpClient httpClient)
         {
-            _context = context;
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri("https://faceon-api.calmwave-03f9df68.southafricanorth.azurecontainerapps.io/api/");
         }
 
         // GET: api/Lesson
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Lesson>>> GetLessons()
         {
-            return await _context.Lessons
-                .Include(l => l.Classroom) // Include related Classroom entity
-                .Include(l => l.Lecturer) // Include related Lecturer entity
-                .Include(l => l.SubjectCodeNavigation) // Include related Subject
-                .Include(l => l.Attendances) // Include related Attendances
-                .ToListAsync();
+            var response = await _httpClient.GetAsync("lessons");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var lessons = JsonConvert.DeserializeObject<IEnumerable<Lesson>>(data);
+
+            return Ok(lesson);
         }
 
         // GET: api/Lesson/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Lesson>> GetLesson(int id)
         {
-            var lesson = await _context.Lessons
-                .Include(l => l.Classroom)
-                .Include(l => l.Lecturer)
-                .Include(l => l.SubjectCodeNavigation)
-                .Include(l => l.Attendances)
-                .FirstOrDefaultAsync(l => l.Id == id);
+            var response = await _httpClient.GetAsync($"lessons/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var lesson = JsonConvert.DeserializeObject<Lesson>(data);
 
             if (lesson == null)
             {
                 return NotFound();
             }
 
-            return lesson;
+            return Ok(lesson);
         }
 
         // PUT: api/Lesson/5
@@ -58,22 +66,12 @@ namespace StudentAttendanceWebApp.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(lesson).State = EntityState.Modified;
+            var content = new StringContent(JsonConvert.SerializeObject(lesson), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"lessons/{id}", content);
 
-            try
+            if (!response.IsSuccessStatusCode)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LessonExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode((int)response.StatusCode);
             }
 
             return NoContent();
@@ -83,31 +81,4 @@ namespace StudentAttendanceWebApp.Controllers
         [HttpPost]
         public async Task<ActionResult<Lesson>> PostLesson(Lesson lesson)
         {
-            _context.Lessons.Add(lesson);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetLesson", new { id = lesson.Id }, lesson);
-        }
-
-        // DELETE: api/Lesson/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLesson(int id)
-        {
-            var lesson = await _context.Lessons.FindAsync(id);
-            if (lesson == null)
-            {
-                return NotFound();
-            }
-
-            _context.Lessons.Remove(lesson);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool LessonExists(int id)
-        {
-            return _context.Lessons.Any(e => e.Id == id);
-        }
-    }
-}
+            var content = new StringContent(JsonConvert.SerializeObject(lesson), Encoding.UTF8, "

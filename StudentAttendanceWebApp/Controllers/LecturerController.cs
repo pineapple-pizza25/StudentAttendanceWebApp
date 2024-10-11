@@ -1,48 +1,60 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using StudentAttendanceWebApp.Models;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentAttendanceWebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LecturerController : ControllerBase
+    public class LecturerController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HttpClient _httpClient;
 
-        public LecturerController(ApplicationDbContext context)
+        public LecturerController(HttpClient httpClient)
         {
-            _context = context;
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri("https://faceon-api.calmwave-03f9df68.southafricanorth.azurecontainerapps.io/api/");
         }
 
         // GET: api/Lecturer
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Lecturer>>> GetLecturers()
         {
-            return await _context.Lecturers
-                .Include(l => l.Campus) // Include related Campus entity
-                .Include(l => l.Lessons) // Include related Lessons collection
-                .ToListAsync();
+            var response = await _httpClient.GetAsync("lecturers");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var lecturers = JsonConvert.DeserializeObject<IEnumerable<Lecturer>>(data);
+
+            return Ok(lecturers);
         }
 
         // GET: api/Lecturer/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Lecturer>> GetLecturer(string id)
         {
-            var lecturer = await _context.Lecturers
-                .Include(l => l.Campus)
-                .Include(l => l.Lessons)
-                .FirstOrDefaultAsync(l => l.LecturerId == id);
+            var response = await _httpClient.GetAsync($"lecturers/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var lecturer = JsonConvert.DeserializeObject<Lecturer>(data);
 
             if (lecturer == null)
             {
                 return NotFound();
             }
 
-            return lecturer;
+            return Ok(lecturer);
         }
 
         // PUT: api/Lecturer/5
@@ -54,22 +66,12 @@ namespace StudentAttendanceWebApp.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(lecturer).State = EntityState.Modified;
+            var content = new StringContent(JsonConvert.SerializeObject(lecturer), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"lecturers/{id}", content);
 
-            try
+            if (!response.IsSuccessStatusCode)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LecturerExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode((int)response.StatusCode);
             }
 
             return NoContent();
@@ -79,31 +81,32 @@ namespace StudentAttendanceWebApp.Controllers
         [HttpPost]
         public async Task<ActionResult<Lecturer>> PostLecturer(Lecturer lecturer)
         {
-            _context.Lecturers.Add(lecturer);
-            await _context.SaveChangesAsync();
+            var content = new StringContent(JsonConvert.SerializeObject(lecturer), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("lecturers", content);
 
-            return CreatedAtAction("GetLecturer", new { id = lecturer.LecturerId }, lecturer);
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var createdLecturer = JsonConvert.DeserializeObject<Lecturer>(data);
+
+            return CreatedAtAction("GetLecturer", new { id = createdLecturer.LecturerId }, createdLecturer);
         }
 
         // DELETE: api/Lecturer/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLecturer(string id)
         {
-            var lecturer = await _context.Lecturers.FindAsync(id);
-            if (lecturer == null)
+            var response = await _httpClient.DeleteAsync($"lecturers/{id}");
+
+            if (!response.IsSuccessStatusCode)
             {
-                return NotFound();
+                return StatusCode((int)response.StatusCode);
             }
 
-            _context.Lecturers.Remove(lecturer);
-            await _context.SaveChangesAsync();
-
             return NoContent();
-        }
-
-        private bool LecturerExists(string id)
-        {
-            return _context.Lecturers.Any(e => e.LecturerId == id);
         }
     }
 }

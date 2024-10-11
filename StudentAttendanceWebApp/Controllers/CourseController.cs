@@ -1,46 +1,60 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using StudentAttendanceWebApp.Models;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentAttendanceWebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CourseController : ControllerBase
+    public class CourseController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HttpClient _httpClient;
 
-        public CourseController(ApplicationDbContext context)
+        public CourseController(HttpClient httpClient)
         {
-            _context = context;
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri("https://faceon-api.calmwave-03f9df68.southafricanorth.azurecontainerapps.io/api/");
         }
 
         // GET: api/Course
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourses()
         {
-            return await _context.Courses
-                .Include(c => c.Subjects) // Include the Subjects collection
-                .ToListAsync();
+            var response = await _httpClient.GetAsync("courses");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var courses = JsonConvert.DeserializeObject<IEnumerable<Course>>(data);
+
+            return Ok(courses);
         }
 
         // GET: api/Course/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Course>> GetCourse(string id)
         {
-            var course = await _context.Courses
-                .Include(c => c.Subjects)
-                .FirstOrDefaultAsync(c => c.Id == id);
+            var response = await _httpClient.GetAsync($"courses/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var course = JsonConvert.DeserializeObject<Course>(data);
 
             if (course == null)
             {
                 return NotFound();
             }
 
-            return course;
+            return Ok(course);
         }
 
         // PUT: api/Course/5
@@ -52,22 +66,12 @@ namespace StudentAttendanceWebApp.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(course).State = EntityState.Modified;
+            var content = new StringContent(JsonConvert.SerializeObject(course), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"courses/{id}", content);
 
-            try
+            if (!response.IsSuccessStatusCode)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CourseExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode((int)response.StatusCode);
             }
 
             return NoContent();
@@ -77,31 +81,32 @@ namespace StudentAttendanceWebApp.Controllers
         [HttpPost]
         public async Task<ActionResult<Course>> PostCourse(Course course)
         {
-            _context.Courses.Add(course);
-            await _context.SaveChangesAsync();
+            var content = new StringContent(JsonConvert.SerializeObject(course), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("courses", content);
 
-            return CreatedAtAction("GetCourse", new { id = course.Id }, course);
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var createdCourse = JsonConvert.DeserializeObject<Course>(data);
+
+            return CreatedAtAction("GetCourse", new { id = createdCourse.Id }, createdCourse);
         }
 
         // DELETE: api/Course/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCourse(string id)
         {
-            var course = await _context.Courses.FindAsync(id);
-            if (course == null)
+            var response = await _httpClient.DeleteAsync($"courses/{id}");
+
+            if (!response.IsSuccessStatusCode)
             {
-                return NotFound();
+                return StatusCode((int)response.StatusCode);
             }
 
-            _context.Courses.Remove(course);
-            await _context.SaveChangesAsync();
-
             return NoContent();
-        }
-
-        private bool CourseExists(string id)
-        {
-            return _context.Courses.Any(e => e.Id == id);
         }
     }
 }

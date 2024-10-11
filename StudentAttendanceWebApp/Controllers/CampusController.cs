@@ -1,52 +1,60 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using StudentAttendanceWebApp.Models;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentAttendanceWebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CampusController : ControllerBase
+    public class CampusController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HttpClient _httpClient;
 
-        public CampusController(ApplicationDbContext context)
+        public CampusController(HttpClient httpClient)
         {
-            _context = context;
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri("https://faceon-api.calmwave-03f9df68.southafricanorth.azurecontainerapps.io/api/");
         }
 
         // GET: api/Campus
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Campus>>> GetCampuses()
         {
-            return await _context.Campuses
-                .Include(c => c.Administrators)
-                .Include(c => c.Classrooms)
-                .Include(c => c.Lecturers)
-                .Include(c => c.Students)
-                .ToListAsync();
+            var response = await _httpClient.GetAsync("campuses");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var campuses = JsonConvert.DeserializeObject<IEnumerable<Campus>>(data);
+
+            return Ok(campuses);
         }
 
         // GET: api/Campus/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Campus>> GetCampus(int id)
         {
-            var campus = await _context.Campuses
-                .Include(c => c.Administrators)
-                .Include(c => c.Classrooms)
-                .Include(c => c.Lecturers)
-                .Include(c => c.Students)
-                .FirstOrDefaultAsync(c => c.Id == id);
+            var response = await _httpClient.GetAsync($"campuses/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var campus = JsonConvert.DeserializeObject<Campus>(data);
 
             if (campus == null)
             {
                 return NotFound();
             }
 
-            return campus;
+            return Ok(campus);
         }
 
         // PUT: api/Campus/5
@@ -58,22 +66,12 @@ namespace StudentAttendanceWebApp.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(campus).State = EntityState.Modified;
+            var content = new StringContent(JsonConvert.SerializeObject(campus), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"campuses/{id}", content);
 
-            try
+            if (!response.IsSuccessStatusCode)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CampusExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode((int)response.StatusCode);
             }
 
             return NoContent();
@@ -83,31 +81,32 @@ namespace StudentAttendanceWebApp.Controllers
         [HttpPost]
         public async Task<ActionResult<Campus>> PostCampus(Campus campus)
         {
-            _context.Campuses.Add(campus);
-            await _context.SaveChangesAsync();
+            var content = new StringContent(JsonConvert.SerializeObject(campus), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("campuses", content);
 
-            return CreatedAtAction("GetCampus", new { id = campus.Id }, campus);
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var createdCampus = JsonConvert.DeserializeObject<Campus>(data);
+
+            return CreatedAtAction("GetCampus", new { id = createdCampus.Id }, createdCampus);
         }
 
         // DELETE: api/Campus/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCampus(int id)
         {
-            var campus = await _context.Campuses.FindAsync(id);
-            if (campus == null)
+            var response = await _httpClient.DeleteAsync($"campuses/{id}");
+
+            if (!response.IsSuccessStatusCode)
             {
-                return NotFound();
+                return StatusCode((int)response.StatusCode);
             }
 
-            _context.Campuses.Remove(campus);
-            await _context.SaveChangesAsync();
-
             return NoContent();
-        }
-
-        private bool CampusExists(int id)
-        {
-            return _context.Campuses.Any(e => e.Id == id);
         }
     }
 }
