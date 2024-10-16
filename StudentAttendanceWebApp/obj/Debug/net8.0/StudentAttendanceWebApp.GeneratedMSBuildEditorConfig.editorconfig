@@ -9,259 +9,259 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = StudentAttendanceWebApp
 build_property.RootNamespace = StudentAttendanceWebApp
-build_property.ProjectDir = C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\
+build_property.ProjectDir = C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp
+build_property.MSBuildProjectDirectory = C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Administrator/Create.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Administrator/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Administrator/Delete.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Administrator/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Administrator/Details.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Administrator/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Administrator/Edit.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Administrator/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Administrator/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Administrator/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Attendance/Create.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Attendance/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW5jZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Attendance/Delete.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Attendance/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW5jZVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Attendance/Details.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Attendance/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW5jZVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Attendance/Edit.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Attendance/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW5jZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Attendance/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Attendance/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW5jZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Campus/Create.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Campus/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FtcHVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Campus/Delete.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Campus/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FtcHVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Campus/Details.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Campus/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FtcHVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Campus/Edit.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Campus/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FtcHVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Campus/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Campus/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FtcHVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Classroom/Create.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Classroom/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Classroom/Delete.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Classroom/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Classroom/Details.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Classroom/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Classroom/Edit.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Classroom/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Classroom/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Classroom/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Course/Create.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Course/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Course/Delete.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Course/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Course/Details.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Course/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Course/Edit.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Course/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Course/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Course/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Home/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Home/Privacy.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lecturer/Create.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lecturer/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVjdHVyZXJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lecturer/Delete.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lecturer/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVjdHVyZXJcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lecturer/Details.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lecturer/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVjdHVyZXJcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lecturer/Edit.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lecturer/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVjdHVyZXJcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lecturer/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lecturer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVjdHVyZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/Create.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVzc29uXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/Delete.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVzc29uXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/Details.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVzc29uXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/Edit.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVzc29uXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVzc29uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Shared/Error.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentCourse/Create.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentCourse/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudENvdXJzZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentCourse/Delete.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentCourse/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudENvdXJzZVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentCourse/Details.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentCourse/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudENvdXJzZVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentCourse/Edit.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentCourse/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudENvdXJzZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentCourse/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentCourse/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudENvdXJzZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentSubject/Create.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentSubject/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFN1YmplY3RcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentSubject/Delete.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentSubject/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFN1YmplY3RcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentSubject/Details.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentSubject/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFN1YmplY3RcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentSubject/Edit.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentSubject/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFN1YmplY3RcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentSubject/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/StudentSubject/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFN1YmplY3RcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Student/Create.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Student/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Student/Delete.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Student/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Student/Details.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Student/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Student/Edit.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Student/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Student/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Student/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Subject/Create.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Subject/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Subject/Delete.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Subject/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Subject/Details.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Subject/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Subject/Edit.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Subject/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Subject/Index.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Subject/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/_ViewImports.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/_ViewStart.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/PinapplePizza25/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Shared/_Layout.cshtml]
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-qmn00czmh6

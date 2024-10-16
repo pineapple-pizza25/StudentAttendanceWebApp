@@ -22,12 +22,12 @@ namespace StudentAttendanceWebApp.Controllers
         // GET: /Student
         public async Task<IActionResult> Index()
         {
-            Console.Write("We're testing this controller");
+            System.Diagnostics.Debug.WriteLine("We're testing this controller");
 
             try
             {
                 var requestUri = _httpClient.BaseAddress + "Student";
-                Console.WriteLine($"Requesting: {requestUri}");
+                System.Diagnostics.Debug.WriteLine($"Requesting: {requestUri}");
 
                 var response = await _httpClient.GetAsync("Student");
 
@@ -35,9 +35,13 @@ namespace StudentAttendanceWebApp.Controllers
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
 
+                    System.Diagnostics.Debug.WriteLine(jsonResponse);
+
                     if (!string.IsNullOrEmpty(jsonResponse))
                     {
                         var students = JsonConvert.DeserializeObject<List<Student>>(jsonResponse);
+
+                        System.Diagnostics.Debug.WriteLine(students);
 
                         return View(students);
                     }

@@ -33,7 +33,7 @@ namespace StudentAttendanceWebApp.Controllers
             var data = await response.Content.ReadAsStringAsync();
             var lessons = JsonConvert.DeserializeObject<IEnumerable<Lesson>>(data);
 
-            return Ok(lesson);
+            return Ok(lessons);
         }
 
         // GET: api/Lesson/5
@@ -81,4 +81,31 @@ namespace StudentAttendanceWebApp.Controllers
         [HttpPost]
         public async Task<ActionResult<Lesson>> PostLesson(Lesson lesson)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(lesson), Encoding.UTF8, "
+            var content = new StringContent(JsonConvert.SerializeObject(lesson), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("lessons", content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var data = await response.Content.ReadAsStringAsync();
+            var createdLesson = JsonConvert.DeserializeObject<Lesson>(data);
+
+            return CreatedAtAction(nameof(GetLesson), new { id = createdLesson.Id }, createdLesson);
+        }
+
+        // DELETE: api/Lesson/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteLesson(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"lessons/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            return NoContent();
+        }
+    }
+}

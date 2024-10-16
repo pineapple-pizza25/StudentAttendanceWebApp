@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StudentAttendanceWebApp.Models.Student>
+﻿@model List<Student>
 
 <div class="container">
     <div class="sidebar">
@@ -37,7 +37,7 @@
                         <td>@student.PhoneNumber</td>
                         <td>@student.Email</td>
                         <td>@student.DateOfBirth.ToShortDateString()</td>
-                        <td>@student.Campus.CampusName</td>
+                        <td>@student.CampusId</td>
                         <td>
                             <a href="/Students/Edit/@student.StudentId">Edit</a> |
                             <a href="/Students/Details/@student.StudentId">Details</a> |
