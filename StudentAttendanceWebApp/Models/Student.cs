@@ -18,6 +18,8 @@ public partial class Student
     public DateOnly DateOfBirth { get; set; }
 
     public int CampusId { get; set; }
+    public bool RegistrationComplete { get; set; }
+    public string? image { get; set; }
 
     public virtual ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
 

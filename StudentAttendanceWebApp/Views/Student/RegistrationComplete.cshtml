@@ -1,0 +1,78 @@
+﻿@model StudentAttendanceWebApp.Models.Student
+
+@{
+    ViewData["Title"] = "Complete Registration";
+}
+
+<div class="container mt-4">
+    <h2>Complete Student Registration</h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    @if (!string.IsNullOrEmpty(Model.image))
+                    {
+                        <img src="@Model.image" alt="Student Photo" class="img-fluid rounded mb-3" style="max-width: 200px;" />
+                    }
+                    else
+                    {
+                        <img src="/images/default-profile.jpg" alt="Default Profile" class="img-fluid rounded mb-3" style="max-width: 200px;" />
+                    }
+                </div>
+                <div class="col-md-9">
+                    <h4>Student Details</h4>
+                    <dl class="row">
+                        <dt class="col-sm-3">Student ID</dt>
+                        <dd class="col-sm-9">@Model.StudentId</dd>
+
+                        <dt class="col-sm-3">Name</dt>
+                        <dd class="col-sm-9">@Model.FirstName @Model.LastName</dd>
+
+                        <dt class="col-sm-3">Email</dt>
+                        <dd class="col-sm-9">@Model.Email</dd>
+
+                        <dt class="col-sm-3">Phone</dt>
+                        <dd class="col-sm-9">@Model.PhoneNumber</dd>
+
+                        <dt class="col-sm-3">Date of Birth</dt>
+                        <dd class="col-sm-9">@Model.DateOfBirth.ToString("d")</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <form asp-action="CompleteRegistration" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="StudentId" />
+                <input type="hidden" asp-for="FirstName" />
+                <input type="hidden" asp-for="LastName" />
+                <input type="hidden" asp-for="PhoneNumber" />
+                <input type="hidden" asp-for="Email" />
+                <input type="hidden" asp-for="DateOfBirth" />
+                <input type="hidden" asp-for="CampusId" />
+                <input type="hidden" asp-for="image" />
+                
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Update Profile Photo</label>
+                            <input type="file" name="imageFile" class="form-control" accept="image/*" />
+                            <small class="text-muted">Leave empty to keep current image</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox mt-4">
+                                <input type="checkbox" class="custom-control-input" asp-for="RegistrationComplete" id="registrationComplete">
+                                <label class="custom-control-label" for="registrationComplete">Mark Registration as Complete</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="submit" value="Save Changes" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

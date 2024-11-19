@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\snmis\\source\\repos\\studentattendancewebapp\\studentattendancewebapp\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\snmis\\source\\repos\\studentattendancewebapp\\studentattendancewebapp\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\snmis\\source\\repos\\studentattendancewebapp\\studentattendancewebapp\\studentattendancewebapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\studentattendancewebapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\snmis\\source\\repos\\studentattendancewebapp\\studentattendancewebapp\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,17 +26,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "StudentAttendanceWebApp.csproj",
+              "DocumentMoniker": "C:\\Users\\snmis\\source\\repos\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj",
+              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj",
+              "ToolTip": "C:\\Users\\snmis\\source\\repos\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj",
+              "RelativeToolTip": "StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-12T11:39:24.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Student.cs",
               "DocumentMoniker": "C:\\Users\\snmis\\source\\repos\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Student.cs",
               "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Models\\Student.cs",
               "ToolTip": "C:\\Users\\snmis\\source\\repos\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Student.cs",
               "RelativeToolTip": "StudentAttendanceWebApp\\Models\\Student.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAA3wAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-16T18:41:12.28Z",
               "EditorCaption": ""
@@ -45,14 +62,14 @@
               "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Controllers\\StudentController.cs",
               "ToolTip": "C:\\Users\\snmis\\source\\repos\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Controllers\\StudentController.cs",
               "RelativeToolTip": "StudentAttendanceWebApp\\Controllers\\StudentController.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAYwC0AAAAuAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-16T17:50:44.737Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\snmis\\source\\repos\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Student\\Index.cshtml",
               "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Views\\Student\\Index.cshtml",
@@ -60,8 +77,7 @@
               "RelativeToolTip": "StudentAttendanceWebApp\\Views\\Student\\Index.cshtml",
               "ViewState": "AQIAACAAAAAAAAAAAAAiwCcAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-16T13:15:13.796Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-16T13:15:13.796Z"
             }
           ]
         }
