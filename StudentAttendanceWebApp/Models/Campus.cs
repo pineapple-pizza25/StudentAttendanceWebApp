@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace StudentAttendanceWebApp.Models;
@@ -6,6 +7,9 @@ namespace StudentAttendanceWebApp.Models;
 public partial class Campus
 {
     public int Id { get; set; }
+
+    [JsonProperty("name")]
+    public string Name { get; set; } = null!;
 
     public string CampusName { get; set; } = null!;
 

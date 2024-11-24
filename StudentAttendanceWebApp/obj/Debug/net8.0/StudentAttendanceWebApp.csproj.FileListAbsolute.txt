@@ -148,6 +148,7 @@ C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendance
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\StudentAttendanceWebApp.pdb
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\DnsClient.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Humanizer.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
@@ -171,10 +172,14 @@ C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendance
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\MongoDB.Bson.dll
+C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\MongoDB.Driver.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Npgsql.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\SharpCompress.dll
+C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Snappier.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\System.CodeDom.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\System.Composition.AttributedModel.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\System.Composition.Convention.dll
@@ -189,6 +194,7 @@ C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendance
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\System.Security.Permissions.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\ZstdSharp.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
