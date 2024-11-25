@@ -55,6 +55,11 @@
                 <button type="submit" class="btn btn-primary">Complete Registration</button>
             </form>
 
+            <form asp-action="Attendance" method="get">
+                <input type="hidden" name="studentId" value=@Model.StudentId />
+                <button type="submit" class="btn btn-primary">View Attendance</button>
+            </form>
+
             <button type="button" class="button edit-button" onclick="location.href='/Students/Edit/@Model.StudentId'">Edit</button>
             <button type="button" class="button back-button" onclick="location.href='/Students'">Back to List</button>
         </div>

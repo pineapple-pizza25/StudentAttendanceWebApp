@@ -1,0 +1,53 @@
+﻿@model List<Attendance>
+@{
+    ViewData["Title"] = "Student Attendance";
+}
+<div class="container">
+    <h2 class="mt-4 mb-3">Student Attendance</h2>
+    <form method="get" asp-action="GetAttendance">
+        <div class="form-group">
+            <label for="studentId">Student ID</label>
+            <input type="text" id="studentId" name="studentId" class="form-control" placeholder="Enter Student ID" required />
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Get Attendance</button>
+    </form>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-striped mt-3">
+            <thead class="thead-light">
+                <tr>
+                    <th>Lesson ID</th>
+                    <th>Timestamp</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var attendance in Model)
+                {
+                    <tr>
+                        <td>@attendance.LessonId</td>
+                        <td>@attendance.Timestamp?.ToString()</td>
+                        <td>@attendance.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else if (Model != null)
+    {
+        <div class="alert alert-warning mt-3">
+            No attendance records found.
+        </div>
+    }
+
+    @if (ViewData.ModelState != null && !ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger mt-3">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
+</div>

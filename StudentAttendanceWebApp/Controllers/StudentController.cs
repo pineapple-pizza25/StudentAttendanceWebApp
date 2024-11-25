@@ -174,7 +174,7 @@ namespace StudentAttendanceWebApp.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CompleteRegistration(string studentId)
         {
@@ -223,6 +223,46 @@ namespace StudentAttendanceWebApp.Controllers
                 _logger.LogError(ex, "Unexpected error while completing registration for student {StudentId}", studentId);
                 return StatusCode(500, "An unexpected error occurred");
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Attendance(string studentId)
+        {
+            if (string.IsNullOrEmpty(studentId))
+            {
+                ModelState.AddModelError("", "Student ID is required.");
+                return View();
+            }
+
+            var url = $"/api/students/attendance/{studentId}"; // Replace with your API base URL if necessary.
+
+            try
+            {
+                var response = await _httpClient.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var attendanceRecords = await response.Content.ReadFromJsonAsync<List<Attendance>>();
+                     if (attendanceRecords == null || !attendanceRecords.Any())
+                    {
+                        ModelState.AddModelError("", "No attendance records found for this student.");
+                        return View(new List<Attendance>());
+                    }
+
+                    return View("Attendance", attendanceRecords);
+                }
+                else
+                {
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+                    ModelState.AddModelError("", errorMessage);
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "An error occurred while fetching attendance: " + ex.Message);
+            }
+
+            return View("Attendance", new List<Attendance>());
         }
 
         #region Private Methods

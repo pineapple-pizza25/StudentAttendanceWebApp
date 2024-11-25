@@ -11,6 +11,7 @@ builder.Services.AddLogging(builder =>
 });
 
 builder.Services.AddControllersWithViews();
+//builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 builder.Services.AddHttpClient();
 

@@ -56,12 +56,13 @@ namespace StudentAttendanceWebApp.Controllers
 
             return Ok(attendance);
         }
+        /*
 
         // PUT: api/Attendance/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAttendance(int id, Attendance attendance)
         {
-            if (id != attendance.Id)
+            if (id != attendance.)
             {
                 return BadRequest();
             }
@@ -76,6 +77,7 @@ namespace StudentAttendanceWebApp.Controllers
 
             return NoContent();
         }
+
 
         // POST: api/Attendance
         [HttpPost]
@@ -108,5 +110,8 @@ namespace StudentAttendanceWebApp.Controllers
 
             return NoContent();
         }
+
+        */
     }
+
 }

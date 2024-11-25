@@ -1,19 +1,18 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace StudentAttendanceWebApp.Models;
 
 public partial class Attendance
 {
-    public int Id { get; set; }
+    [JsonProperty("lessonId", NullValueHandling = NullValueHandling.Ignore)]
+    public string LessonId { get; set; } = null!;
 
-    public int LessonId { get; set; }
+    [JsonProperty("timestamp", NullValueHandling = NullValueHandling.Ignore)]
+    public DateTime? Timestamp { get; set; }
 
-    public string StudentId { get; set; } = null!;
-
-    public int? DurationMinutes { get; set; }
-
-    public virtual Lesson Lesson { get; set; } = null!;
-
-    public virtual Student Student { get; set; } = null!;
+    [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+    public string Status { get; set; } = null!;
 }

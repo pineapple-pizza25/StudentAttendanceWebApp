@@ -17,10 +17,6 @@ namespace StudentAttendanceWebApp.Models
         [BsonElement("password")]
         public string? Password { get; set; }
 
-        [BsonElement("attendance")]
-        public List<Attendance>? Atttendance { get; set; }
-
-
         [JsonProperty("firstName", NullValueHandling = NullValueHandling.Ignore)]      
         public string FirstName { get; set; } = null!;
 
@@ -59,5 +55,9 @@ namespace StudentAttendanceWebApp.Models
 
         [JsonProperty("subjects", NullValueHandling = NullValueHandling.Ignore)]    
         public List<string>? Subjects { get; set; } = new List<string>();
+
+        [JsonProperty("attendance", NullValueHandling = NullValueHandling.Ignore)]
+        public List<Attendance>? Attendance { get; set; } = new List<Attendance>();
+
     }
 }
