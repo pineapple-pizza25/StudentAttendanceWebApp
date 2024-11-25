@@ -1,5 +1,43 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<StudentAttendanceWebApp.Models.Lesson>
+
 @{
+    ViewData["Title"] = "Lessons";
 }
+
+<h1>Lessons</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Lesson Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Classroom</th>
+            <th>Lecturer</th>
+            <th>Subject</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lesson in Model)
+        {
+            <tr>
+                <td>@lesson.Id</td>
+                <td>@lesson.LessonDate.ToString("yyyy-MM-dd")</td>
+                <td>@lesson.StartTime.ToString("hh\\:mm")</td>
+                <td>@lesson.EndTime.ToString("hh\\:mm")</td>
+                <td>@lesson.ClassroomId</td>
+                <td>@lesson.LecturerId</td>
+                <td>@lesson.SubjectCode</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@lesson.Id" class="btn btn-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@lesson.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@lesson.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Create New Lesson</a>
