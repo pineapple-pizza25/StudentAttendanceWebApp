@@ -1,5 +1,78 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model StudentAttendanceWebApp.Models.Course
+
 @{
+    ViewData["Title"] = "Course Details";
 }
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Course Details</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Courses</a></li>
+        <li class="breadcrumb-item active">Details</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-info-circle me-1"></i>
+            Course Information
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CourseName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.CourseName)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Duration)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Duration) months</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Deprecated)</dt>
+                <dd class="col-sm-9">
+                    @if (Model.Deprecated)
+                    {
+                        <span class="badge bg-danger">Yes</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success">No</span>
+                    }
+                </dd>
+            </dl>
+
+            <div class="mt-4">
+                <h4>Subjects</h4>
+                @if (Model.Subjects.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Subject Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var subject in Model.Subjects)
+                                {
+                                    <tr>
+                                        <td>@subject.SubjectName</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        No subjects assigned to this course.
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

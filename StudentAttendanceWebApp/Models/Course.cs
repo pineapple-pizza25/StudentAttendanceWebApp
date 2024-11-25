@@ -1,17 +1,32 @@
-﻿using System;
+﻿// Course.cs
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
-namespace StudentAttendanceWebApp.Models;
-
-public partial class Course
+namespace StudentAttendanceWebApp.Models
 {
-    public string Id { get; set; } = null!;
+    public partial class Course
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; } = null!;
 
-    public string CourseName { get; set; } = null!;
+        [Required(ErrorMessage = "Course name is required")]
+        [Display(Name = "Course Name")]
+        [StringLength(100, MinimumLength = 3, ErrorMessage = "Course name must be between 3 and 100 characters")]
+        [JsonProperty("courseName")]
+        public string CourseName { get; set; } = null!;
 
-    public int Duration { get; set; }
+        [Required(ErrorMessage = "Duration is required")]
+        [Range(1, 48, ErrorMessage = "Duration must be between 1 and 48 months")]
+        [JsonProperty("duration")]
+        public int Duration { get; set; }
 
-    public bool Deprecated { get; set; }
+        [Display(Name = "Deprecated")]
+        [JsonProperty("deprecated")]
+        public bool Deprecated { get; set; }
 
-    public virtual ICollection<Subject> Subjects { get; set; } = new List<Subject>();
+        [JsonProperty("subjects")]
+        public virtual ICollection<Subject> Subjects { get; set; } = new List<Subject>();
+    }
 }

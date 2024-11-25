@@ -1,64 +1,51 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using StudentAttendanceWebApp.Models;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+using System.Linq;
 
 namespace StudentAttendanceWebApp.Controllers
 {
     public class StudentController : Controller
     {
         private readonly HttpClient _httpClient;
+        private readonly ILogger<StudentController> _logger;
+        private readonly JsonSerializerSettings _jsonSettings;
 
-        public StudentController(HttpClient httpClient)
+        public StudentController(HttpClient httpClient, ILogger<StudentController> logger)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
             _httpClient.BaseAddress = new Uri("https://faceon-api.calmwave-03f9df68.southafricanorth.azurecontainerapps.io/api/");
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+            _jsonSettings = new JsonSerializerSettings
+            {
+                Error = HandleDeserializationError,
+                MissingMemberHandling = MissingMemberHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore
+            };
         }
 
         // GET: /Student
         public async Task<IActionResult> Index()
         {
-            System.Diagnostics.Debug.WriteLine("We're testing this controller");
-
             try
             {
-                var requestUri = _httpClient.BaseAddress + "Student";
-                System.Diagnostics.Debug.WriteLine($"Requesting: {requestUri}");
-
-                var response = await _httpClient.GetAsync("Student");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var jsonResponse = await response.Content.ReadAsStringAsync();
-
-                    System.Diagnostics.Debug.WriteLine(jsonResponse);
-
-                    if (!string.IsNullOrEmpty(jsonResponse))
-                    {
-                        var students = JsonConvert.DeserializeObject<List<Student>>(jsonResponse);
-
-                        System.Diagnostics.Debug.WriteLine(students);
-
-                        return View(students);
-                    }
-                }
-
-                ModelState.AddModelError("", "Could not retrieve data from the API.");
-                return View(new List<Student>());
-            }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"HTTP Request Exception: {ex.Message}");
-                ModelState.AddModelError("", $"An error occurred while sending the request: {ex.Message}");
-                return View(new List<Student>());
+                var students = await GetStudentsAsync();
+                return View(students);
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", $"An error occurred: {ex.Message}");
+                HandleException(ex);
                 return View(new List<Student>());
             }
         }
@@ -66,89 +53,97 @@ namespace StudentAttendanceWebApp.Controllers
         // GET: /Student/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            var response = await _httpClient.GetAsync($"students/{id}");
-            if (response.IsSuccessStatusCode)
+            if (string.IsNullOrEmpty(id))
             {
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-                var student = JsonConvert.DeserializeObject<Student>(jsonResponse);
+                return BadRequest("Student ID is required");
+            }
+
+            try
+            {
+                var student = await GetStudentByIdAsync(id);
+                if (student == null)
+                {
+                    return NotFound($"Student with ID {id} not found");
+                }
+
                 return View(student);
             }
-            return NotFound();
+            catch (Exception ex)
+            {
+                HandleException(ex);
+                return RedirectToAction(nameof(Index));
+            }
         }
 
-        // GET: /Student/Create
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+
+
         // POST: /Student/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentId,FirstName,LastName,PhoneNumber,Email,DateOfBirth,CampusId")] Student student)
+        public async Task<IActionResult> Create([FromForm] Student student)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var jsonContent = JsonConvert.SerializeObject(student);
-                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync("students", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-            }
-            return View(student);
-        }
-
-        // GET: /Student/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            var response = await _httpClient.GetAsync($"students/{id}");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-                var student = JsonConvert.DeserializeObject<Student>(jsonResponse);
                 return View(student);
             }
-            return NotFound();
+
+            try
+            {
+                var response = await CreateStudentAsync(student);
+                if (response.IsSuccessStatusCode)
+                {
+                    _logger.LogInformation($"Successfully created student: {student.FirstName} {student.LastName}");
+                    return RedirectToAction(nameof(Index));
+                }
+
+                ModelState.AddModelError("", "Failed to create student. Please try again.");
+                return View(student);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
+                return View(student);
+            }
         }
 
-        // POST: /Student/Edit/5
+        // POST: /Student/Update
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StudentId,FirstName,LastName,PhoneNumber,Email,DateOfBirth,CampusId")] Student student)
+        public async Task<IActionResult> Update(string id, [FromForm] Student student)
         {
             if (id != student.StudentId)
             {
-                return NotFound();
+                return BadRequest("ID mismatch");
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var jsonContent = JsonConvert.SerializeObject(student);
-                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-                var response = await _httpClient.PutAsync($"students/{id}", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-            }
-            return View(student);
-        }
-
-        // GET: /Student/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            var response = await _httpClient.GetAsync($"students/{id}");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-                var student = JsonConvert.DeserializeObject<Student>(jsonResponse);
                 return View(student);
             }
-            return NotFound();
+
+            try
+            {
+                var response = await UpdateStudentAsync(id, student);
+                if (response.IsSuccessStatusCode)
+                {
+                    _logger.LogInformation($"Successfully updated student: {student.FirstName} {student.LastName}");
+                    return RedirectToAction(nameof(Index));
+                }
+
+                ModelState.AddModelError("", "Failed to update student. Please try again.");
+                return View(student);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
+                return View(student);
+            }
         }
 
         // POST: /Student/Delete/5
@@ -156,12 +151,94 @@ namespace StudentAttendanceWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var response = await _httpClient.DeleteAsync($"students/{id}");
-            if (response.IsSuccessStatusCode)
+            try
             {
+                var response = await DeleteStudentAsync(id);
+                if (response.IsSuccessStatusCode)
+                {
+                    _logger.LogInformation($"Successfully deleted student with ID: {id}");
+                    return RedirectToAction(nameof(Index));
+                }
+
+                _logger.LogWarning($"Failed to delete student with ID: {id}");
+                return NotFound($"Student with ID {id} not found");
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
                 return RedirectToAction(nameof(Index));
             }
-            return NotFound();
         }
+
+        #region Private Methods
+
+        private async Task<List<Student>> GetStudentsAsync()
+        {
+            var response = await _httpClient.GetAsync("students");
+            await LogResponseDetails(response);
+
+            response.EnsureSuccessStatusCode();
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            var students = JsonConvert.DeserializeObject<List<Student>>(jsonResponse, _jsonSettings);
+            return students ?? new List<Student>();
+        }
+
+        private async Task<Student> GetStudentByIdAsync(string id)
+        {
+            var response = await _httpClient.GetAsync($"students/{id}");
+            await LogResponseDetails(response);
+
+            response.EnsureSuccessStatusCode();
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<Student>(jsonResponse, _jsonSettings);
+        }
+
+        private async Task<HttpResponseMessage> CreateStudentAsync(Student student)
+        {
+            var json = JsonConvert.SerializeObject(student);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            return await _httpClient.PostAsync("students", content);
+        }
+
+        private async Task<HttpResponseMessage> UpdateStudentAsync(string id, Student student)
+        {
+            var json = JsonConvert.SerializeObject(student);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            return await _httpClient.PutAsync($"students/{id}", content);
+        }
+
+        private async Task<HttpResponseMessage> DeleteStudentAsync(string id)
+        {
+            return await _httpClient.DeleteAsync($"students/{id}");
+        }
+
+        private async Task LogResponseDetails(HttpResponseMessage response)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            _logger.LogInformation($"API Response - Status: {response.StatusCode}, Content: {content}");
+        }
+
+        private void HandleDeserializationError(object sender, Newtonsoft.Json.Serialization.ErrorEventArgs args)
+        {
+            _logger.LogError($"JSON Deserialization Error: {args.ErrorContext.Error.Message} at path: {args.ErrorContext.Path}");
+            args.ErrorContext.Handled = true;
+        }
+
+        private void HandleException(Exception ex)
+        {
+            string errorMessage = ex switch
+            {
+                HttpRequestException httpEx => $"API Connection Error: {httpEx.Message}",
+                JsonException jsonEx => $"JSON Processing Error: {jsonEx.Message}",
+                _ => $"Unexpected Error: {ex.GetType().Name} - {ex.Message}"
+            };
+
+            _logger.LogError(ex, errorMessage);
+            ModelState.AddModelError("", errorMessage);
+        }
+
+        #endregion
     }
 }

@@ -1,5 +1,45 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model StudentAttendanceWebApp.Models.Classroom
+
 @{
+    ViewData["Title"] = "Classroom Details";
 }
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">
+            <h2 class="card-title mb-0">Classroom Details</h2>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.RoomNumber)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.RoomNumber)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Campus)</dt>
+                <dd class="col-sm-9">@(Model.Campus?.Name ?? "Unknown Campus")</dd>
+
+                @if (Model.Lessons != null && Model.Lessons.Any())
+                {
+                    <dt class="col-sm-3">Scheduled Lessons</dt>
+                    <dd class="col-sm-9">
+                        <ul class="list-group">
+                            @foreach (var lesson in Model.Lessons)
+                            {
+                                <li class="list-group-item">@lesson.StartTime.ToString("g") - @lesson.EndTime.ToString("g")</li>
+                            }
+                        </ul>
+                    </dd>
+                }
+            </dl>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

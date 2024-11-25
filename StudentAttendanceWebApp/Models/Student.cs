@@ -1,31 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 
-namespace StudentAttendanceWebApp.Models;
-
-public partial class Student
+namespace StudentAttendanceWebApp.Models
 {
-    public string StudentId { get; set; } = null!;
+    [JsonObject(MemberSerialization.OptIn)]
+    public partial class Student
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.String)]
+        [JsonProperty("studentId", NullValueHandling = NullValueHandling.Ignore)]     
+        public string StudentId { get; set; } = null!;
 
-    public string FirstName { get; set; } = null!;
 
-    public string LastName { get; set; } = null!;
+        [BsonElement("password")]
+        public string? Password { get; set; }
 
-    public string PhoneNumber { get; set; } = null!;
+        [BsonElement("attendance")]
+        public List<Attendance>? Atttendance { get; set; }
 
-    public string Email { get; set; } = null!;
 
-    public DateOnly DateOfBirth { get; set; }
+        [JsonProperty("firstName", NullValueHandling = NullValueHandling.Ignore)]      
+        public string FirstName { get; set; } = null!;
 
-    public int CampusId { get; set; }
-    public bool RegistrationComplete { get; set; }
-    public string? image { get; set; }
+        [JsonProperty("lastName", NullValueHandling = NullValueHandling.Ignore)]      
+        public string LastName { get; set; } = null!;
 
-    public virtual ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
 
-    public virtual Campus Campus { get; set; } = null!;
+        [JsonProperty("username", NullValueHandling = NullValueHandling.Ignore)]
+       public string Username { get; set; } = null!;
 
-    public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
 
-    public virtual ICollection<StudentSubject> StudentSubjects { get; set; } = new List<StudentSubject>();
+        [JsonProperty("phoneNumber", NullValueHandling = NullValueHandling.Ignore)]
+        public string PhoneNumber { get; set; } = null!;
+
+
+        [JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]      
+        public string Email { get; set; } = null!;
+
+
+        [JsonProperty("dateOfBirth", NullValueHandling = NullValueHandling.Ignore)]      
+        public string DateOfBirth { get; set; } = null!;
+
+
+        [BsonIgnore]
+        [JsonProperty("campusId", NullValueHandling = NullValueHandling.Ignore)]       
+        public int CampusId { get; set; }
+
+
+        [JsonProperty("registrationComplete", NullValueHandling = NullValueHandling.Ignore)]     
+        public bool RegistrationComplete { get; set; }
+
+
+        [JsonProperty("image", NullValueHandling = NullValueHandling.Ignore)]       
+        public string Image { get; set; } = null!;
+
+
+        [JsonProperty("subjects", NullValueHandling = NullValueHandling.Ignore)]    
+        public List<string>? Subjects { get; set; } = new List<string>();
+    }
 }
