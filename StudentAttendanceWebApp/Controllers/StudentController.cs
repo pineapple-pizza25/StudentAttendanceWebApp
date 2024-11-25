@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using Azure;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Numerics;
+using Microsoft.EntityFrameworkCore;
 
 namespace StudentAttendanceWebApp.Controllers
 {
@@ -167,6 +171,57 @@ namespace StudentAttendanceWebApp.Controllers
             {
                 HandleException(ex);
                 return RedirectToAction(nameof(Index));
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CompleteRegistration(string studentId)
+        {
+            try
+            {
+                // Log the start of the registration completion attempt
+                _logger.LogInformation("Attempting to complete registration for student {StudentId}", studentId);
+                System.Diagnostics.Debug.WriteLine("Attempting to complete registration for student {StudentId}");
+
+                var response = await _httpClient.PatchAsync(
+                    $"students/{studentId}/complete-registration",
+                    new StringContent(JsonConvert.SerializeObject(new { studentId }), Encoding.UTF8, "application/json")
+                );
+
+                var content = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    _logger.LogInformation("Successfully completed registration for student {StudentId}", studentId);
+                    System.Diagnostics.Debug.WriteLine("Successfully completed registration for student {StudentId}", studentId);
+                    var result = JsonConvert.DeserializeObject<dynamic>(content, _jsonSettings);
+                    return RedirectToAction(nameof(Index));
+                }
+
+                // Log the error response
+                _logger.LogWarning("Failed to complete registration for student {StudentId}. Status: {StatusCode}, Response: {Response}",
+                    studentId, response.StatusCode, content);
+                System.Diagnostics.Debug.WriteLine("Attempting to complete registration for student {StudentId}");
+
+
+                // Handle different status codes
+                return response.StatusCode switch
+                {
+                    System.Net.HttpStatusCode.NotFound => NotFound("Student not found"),
+                    System.Net.HttpStatusCode.BadRequest => BadRequest(content),
+                    _ => StatusCode((int)response.StatusCode, "Failed to complete registration")
+                };
+            }
+            catch (HttpRequestException ex)
+            {
+                _logger.LogError(ex, "Network error while completing registration for student {StudentId}", studentId);
+                return StatusCode(503, "Service temporarily unavailable");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unexpected error while completing registration for student {StudentId}", studentId);
+                return StatusCode(500, "An unexpected error occurred");
             }
         }
 

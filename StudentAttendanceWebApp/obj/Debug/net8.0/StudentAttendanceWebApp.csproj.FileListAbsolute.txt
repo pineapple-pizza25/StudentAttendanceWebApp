@@ -284,3 +284,9 @@ C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendance
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\obj\Debug\net8.0\StudentAttendanceWebApp.pdb
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\obj\Debug\net8.0\StudentAttendanceWebApp.genruntimeconfig.cache
 C:\Users\Admin\Desktop\PinapplePizza25\StudentAttendanceWebApp\StudentAttendanceWebApp\obj\Debug\net8.0\ref\StudentAttendanceWebApp.dll
+C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\DnsClient.dll
+C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\MongoDB.Bson.dll
+C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\MongoDB.Driver.dll
+C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\SharpCompress.dll
+C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\Snappier.dll
+C:\Users\snmis\source\repos\StudentAttendanceWebApp\StudentAttendanceWebApp\bin\Debug\net8.0\ZstdSharp.dll
