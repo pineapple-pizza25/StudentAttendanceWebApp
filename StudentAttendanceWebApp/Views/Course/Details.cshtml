@@ -22,8 +22,7 @@
                 <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CourseName)</dt>
                 <dd class="col-sm-9">@Html.DisplayFor(model => model.CourseName)</dd>
 
-                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Duration)</dt>
-                <dd class="col-sm-9">@Html.DisplayFor(model => model.Duration) months</dd>
+               
 
                 <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Deprecated)</dt>
                 <dd class="col-sm-9">
@@ -70,7 +69,7 @@
         </div>
         <div class="card-footer">
             <div class="btn-group">
-                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+                <a asp-action="Edit" asp-route-id="@Model.CourseId" class="btn btn-primary">Edit</a>
                 <a asp-action="Index" class="btn btn-secondary">Back to List</a>
             </div>
         </div>

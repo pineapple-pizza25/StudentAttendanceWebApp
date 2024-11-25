@@ -26,8 +26,7 @@
                 <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CourseName)</dt>
                 <dd class="col-sm-9">@Html.DisplayFor(model => model.CourseName)</dd>
 
-                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Duration)</dt>
-                <dd class="col-sm-9">@Html.DisplayFor(model => model.Duration) months</dd>
+               
 
                 <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Deprecated)</dt>
                 <dd class="col-sm-9">
@@ -50,7 +49,7 @@
             }
 
             <form asp-action="Delete">
-                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="CourseId" />
                 <div class="btn-group">
                     <button type="submit" class="btn btn-danger">Delete</button>
                     <a asp-action="Index" class="btn btn-secondary">Cancel</a>

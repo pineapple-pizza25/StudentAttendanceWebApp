@@ -122,7 +122,7 @@ namespace StudentAttendanceWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, Course course)
         {
-            if (id != course.Id)
+            if (id != course.CourseId)
             {
                 return BadRequest("ID mismatch");
             }

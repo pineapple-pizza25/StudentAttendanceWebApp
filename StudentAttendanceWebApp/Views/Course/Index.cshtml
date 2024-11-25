@@ -30,7 +30,7 @@
                     <thead>
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.CourseName)</th>
-                            <th>@Html.DisplayNameFor(model => model.Duration)</th>
+                            
                             <th>@Html.DisplayNameFor(model => model.Deprecated)</th>
                             <th>Subjects Count</th>
                             <th>Actions</th>
@@ -41,7 +41,7 @@
                         {
                             <tr>
                                 <td>@Html.DisplayFor(modelItem => item.CourseName)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Duration) months</td>
+                               
                                 <td>
                                     @if (item.Deprecated)
                                     {
@@ -55,13 +55,13 @@
                                 <td>@item.Subjects.Count</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary" title="Edit">
+                                        <a asp-action="Edit" asp-route-id="@item.CourseId" class="btn btn-sm btn-primary" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info" title="Details">
+                                        <a asp-action="Details" asp-route-id="@item.CourseId" class="btn btn-sm btn-info" title="Details">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
-                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" title="Delete">
+                                        <a asp-action="Delete" asp-route-id="@item.CourseId" class="btn btn-sm btn-danger" title="Delete">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </div>

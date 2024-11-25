@@ -43,6 +43,10 @@ public partial class Lesson
     [JsonPropertyName("subjectCode")]
     public string SubjectCode { get; set; } = null!;
 
+    [BsonElement("students")]
+    [JsonPropertyName("students")]
+    public List<string>? Students { get; set; }
+
     [BsonIgnore]
     public virtual ICollection<Attendance>? Attendances { get; set; } = new List<Attendance>();
 
