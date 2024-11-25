@@ -1,5 +1,123 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model StudentAttendanceWebApp.Models.Subject
+
+<div class="container">
+    <div class="sidebar">
+        <h2>INNOV8</h2>
+        <div class="sidebar-item"><a href="/Subject">Subjects</a></div>
+        <div class="sidebar-item"><a href="/Students">Students</a></div>
+        <div class="sidebar-item"><a href="/Settings">Settings</a></div>
+        <div class="sidebar-item back-to-home">
+            <button onclick="location.href='/'" class="button">Back to Home</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Edit Subject</h1>
+        </div>
+
+        <div class="form-container">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="SubjectCode" />
+
+                <div class="form-group">
+                    <label for="SubjectName">Subject Name:</label>
+                    <input asp-for="SubjectName" class="form-control" placeholder="Enter subject name" />
+                    <span asp-validation-for="SubjectName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Credits">Credits:</label>
+                    <input asp-for="Credits" type="number" class="form-control" placeholder="Enter number of credits" />
+                    <span asp-validation-for="Credits" class="text-danger"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="button">Save Changes</button>
+                    <button type="button" class="button cancel-button" onclick="location.href='/Subject'">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .sidebar {
+        width: 20%;
+        background: #f4f4f4;
+        padding: 20px;
+    }
+
+    .sidebar-item {
+        margin-bottom: 10px;
+    }
+
+        .sidebar-item a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .sidebar-item .button {
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    .main-content {
+        width: 80%;
+        padding: 20px;
+    }
+
+    .header h1 {
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+    .form-actions {
+        margin-top: 20px;
+    }
+
+        .form-actions .button {
+            margin-right: 10px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-actions .cancel-button {
+            background: #6c757d;
+        }
+</style>
