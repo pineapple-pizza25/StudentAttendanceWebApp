@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using StudentAttendanceWebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -8,11 +9,10 @@ using System.Threading.Tasks;
 
 namespace StudentAttendanceWebApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class LessonController : Controller
     {
         private readonly HttpClient _httpClient;
+        private const string ApiBaseRoute = "lessons";
 
         public LessonController(HttpClient httpClient)
         {
@@ -20,92 +20,126 @@ namespace StudentAttendanceWebApp.Controllers
             _httpClient.BaseAddress = new Uri("https://faceon-api.calmwave-03f9df68.southafricanorth.azurecontainerapps.io/api/");
         }
 
-        // GET: api/Lesson
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Lesson>>> GetLessons()
+        public async Task<IActionResult> Index()
         {
-            var response = await _httpClient.GetAsync("lessons");
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                return StatusCode((int)response.StatusCode);
+                var response = await _httpClient.GetAsync(ApiBaseRoute);
+                return response.IsSuccessStatusCode
+                    ? View(JsonConvert.DeserializeObject<IEnumerable<Lesson>>(await response.Content.ReadAsStringAsync()))
+                    : StatusCode((int)response.StatusCode, "Error retrieving lessons.");
             }
-
-            var data = await response.Content.ReadAsStringAsync();
-            var lessons = JsonConvert.DeserializeObject<IEnumerable<Lesson>>(data);
-
-            return Ok(lessons);
+            catch (Exception ex)
+            {
+                return View("Error", ex);
+            }
         }
 
-        // GET: api/Lesson/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Lesson>> GetLesson(int id)
+        public async Task<IActionResult> Details(string id)
         {
-            var response = await _httpClient.GetAsync($"lessons/{id}");
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                return StatusCode((int)response.StatusCode);
+                var response = await _httpClient.GetAsync($"{ApiBaseRoute}/{id}");
+                return response.IsSuccessStatusCode
+                    ? View(JsonConvert.DeserializeObject<Lesson>(await response.Content.ReadAsStringAsync()))
+                    : StatusCode((int)response.StatusCode, "Error retrieving lesson details.");
             }
-
-            var data = await response.Content.ReadAsStringAsync();
-            var lesson = JsonConvert.DeserializeObject<Lesson>(data);
-
-            if (lesson == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                return View("Error", ex);
             }
-
-            return Ok(lesson);
         }
 
-        // PUT: api/Lesson/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutLesson(int id, Lesson lesson)
-        {
-            if (id != lesson.Id)
-            {
-                return BadRequest();
-            }
+        public IActionResult Create() => View();
 
-            var content = new StringContent(JsonConvert.SerializeObject(lesson), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PutAsync($"lessons/{id}", content);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                return StatusCode((int)response.StatusCode);
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Lesson
         [HttpPost]
-        public async Task<ActionResult<Lesson>> PostLesson(Lesson lesson)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Lesson lesson)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(lesson), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync("lessons", content);
+            if (!ModelState.IsValid) return View(lesson);
 
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                return StatusCode((int)response.StatusCode);
+                var content = new StringContent(JsonConvert.SerializeObject(lesson), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync(ApiBaseRoute, content);
+
+                return response.IsSuccessStatusCode
+                    ? RedirectToAction(nameof(Index))
+                    : StatusCode((int)response.StatusCode, "Error creating lesson.");
             }
-
-            var data = await response.Content.ReadAsStringAsync();
-            var createdLesson = JsonConvert.DeserializeObject<Lesson>(data);
-
-            return CreatedAtAction(nameof(GetLesson), new { id = createdLesson.Id }, createdLesson);
+            catch (Exception ex)
+            {
+                return View("Error", ex);
+            }
         }
 
-        // DELETE: api/Lesson/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLesson(int id)
+        public async Task<IActionResult> Edit(string id)
         {
-            var response = await _httpClient.DeleteAsync($"lessons/{id}");
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                return StatusCode((int)response.StatusCode);
+                var response = await _httpClient.GetAsync($"{ApiBaseRoute}/{id}");
+                return response.IsSuccessStatusCode
+                    ? View(JsonConvert.DeserializeObject<Lesson>(await response.Content.ReadAsStringAsync()))
+                    : StatusCode((int)response.StatusCode, "Error retrieving lesson.");
             }
+            catch (Exception ex)
+            {
+                return View("Error", ex);
+            }
+        }
 
-            return NoContent();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, Lesson lesson)
+        {
+            if (id != lesson.Id) return BadRequest();
+            if (!ModelState.IsValid) return View(lesson);
+
+            try
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(lesson), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PutAsync($"{ApiBaseRoute}/{id}", content);
+
+                return response.IsSuccessStatusCode
+                    ? RedirectToAction(nameof(Index))
+                    : StatusCode((int)response.StatusCode, "Error updating lesson.");
+            }
+            catch (Exception ex)
+            {
+                return View("Error", ex);
+            }
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"{ApiBaseRoute}/{id}");
+                return response.IsSuccessStatusCode
+                    ? View(JsonConvert.DeserializeObject<Lesson>(await response.Content.ReadAsStringAsync()))
+                    : StatusCode((int)response.StatusCode, "Error retrieving lesson.");
+            }
+            catch (Exception ex)
+            {
+                return View("Error", ex);
+            }
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            try
+            {
+                var response = await _httpClient.DeleteAsync($"{ApiBaseRoute}/{id}");
+                return response.IsSuccessStatusCode
+                    ? RedirectToAction(nameof(Index))
+                    : StatusCode((int)response.StatusCode, "Error deleting lesson.");
+            }
+            catch (Exception ex)
+            {
+                return View("Error", ex);
+            }
         }
     }
 }

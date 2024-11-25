@@ -1,5 +1,19 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model StudentAttendanceWebApp.Models.Lesson
+
+<h2>Lesson Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Lesson Information</h5>
+        <p><strong>Lesson Date:</strong> @Model.LessonDate.ToString("yyyy-MM-dd")</p>
+        <p><strong>Start Time:</strong> @Model.StartTime.ToString("HH:mm")</p>
+        <p><strong>End Time:</strong> @Model.EndTime.ToString("HH:mm")</p>
+        <p><strong>Classroom ID:</strong> @Model.ClassroomId</p>
+        <p><strong>Lecturer ID:</strong> @Model.LecturerId</p>
+        <p><strong>Subject Code:</strong> @Model.SubjectCode</p>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

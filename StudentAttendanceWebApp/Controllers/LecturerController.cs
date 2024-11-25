@@ -1,112 +1,196 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using StudentAttendanceWebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace StudentAttendanceWebApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class LecturerController : Controller
     {
         private readonly HttpClient _httpClient;
+        private readonly ILogger<LecturerController> _logger;
 
-        public LecturerController(HttpClient httpClient)
+        public LecturerController(HttpClient httpClient, ILogger<LecturerController> logger)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _httpClient.BaseAddress = new Uri("https://faceon-api.calmwave-03f9df68.southafricanorth.azurecontainerapps.io/api/");
         }
 
-        // GET: api/Lecturer
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Lecturer>>> GetLecturers()
+        // GET: Lecturer
+        public async Task<IActionResult> Index()
         {
-            var response = await _httpClient.GetAsync("lecturers");
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                return StatusCode((int)response.StatusCode);
+                var response = await _httpClient.GetAsync("lecturers");
+                response.EnsureSuccessStatusCode();
+                var data = await response.Content.ReadAsStringAsync();
+                var lecturers = JsonConvert.DeserializeObject<IEnumerable<Lecturer>>(data);
+                return View(lecturers);
             }
-
-            var data = await response.Content.ReadAsStringAsync();
-            var lecturers = JsonConvert.DeserializeObject<IEnumerable<Lecturer>>(data);
-
-            return Ok(lecturers);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching lecturers");
+                return View(new List<Lecturer>());
+            }
         }
 
-        // GET: api/Lecturer/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Lecturer>> GetLecturer(string id)
+        // GET: Lecturer/Details/{id}
+        public async Task<IActionResult> Details(string id)
         {
-            var response = await _httpClient.GetAsync($"lecturers/{id}");
-            if (!response.IsSuccessStatusCode)
+            if (string.IsNullOrEmpty(id))
+                return BadRequest("Lecturer ID is required");
+
+            try
             {
-                return StatusCode((int)response.StatusCode);
+                var response = await _httpClient.GetAsync($"lecturers/{id}");
+                if (!response.IsSuccessStatusCode)
+                    return NotFound($"Lecturer with ID {id} not found");
+
+                var data = await response.Content.ReadAsStringAsync();
+                var lecturer = JsonConvert.DeserializeObject<Lecturer>(data);
+                return View(lecturer);
             }
-
-            var data = await response.Content.ReadAsStringAsync();
-            var lecturer = JsonConvert.DeserializeObject<Lecturer>(data);
-
-            if (lecturer == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                _logger.LogError(ex, "Error fetching lecturer details");
+                return RedirectToAction(nameof(Index));
             }
-
-            return Ok(lecturer);
         }
 
-        // PUT: api/Lecturer/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutLecturer(string id, Lecturer lecturer)
+        // GET: Lecturer/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Lecturer/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Lecturer lecturer)
+        {
+            if (!ModelState.IsValid)
+                return View(lecturer);
+
+            try
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(lecturer), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("lecturers", content);
+
+                if (response.IsSuccessStatusCode)
+                    return RedirectToAction(nameof(Index));
+
+                ModelState.AddModelError("", "Failed to create lecturer. Please try again.");
+                return View(lecturer);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating lecturer");
+                return View(lecturer);
+            }
+        }
+
+        // GET: Lecturer/Edit/{id}
+        public async Task<IActionResult> Edit(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return BadRequest("Lecturer ID is required");
+
+            try
+            {
+                var response = await _httpClient.GetAsync($"lecturers/{id}");
+                if (!response.IsSuccessStatusCode)
+                    return NotFound($"Lecturer with ID {id} not found");
+
+                var data = await response.Content.ReadAsStringAsync();
+                var lecturer = JsonConvert.DeserializeObject<Lecturer>(data);
+                return View(lecturer);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching lecturer for editing");
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        // POST: Lecturer/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, Lecturer lecturer)
         {
             if (id != lecturer.LecturerId)
+                return BadRequest("ID mismatch");
+
+            if (!ModelState.IsValid)
+                return View(lecturer);
+
+            try
             {
-                return BadRequest();
+                var content = new StringContent(JsonConvert.SerializeObject(lecturer), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PutAsync($"lecturers/{id}", content);
+
+                if (response.IsSuccessStatusCode)
+                    return RedirectToAction(nameof(Index));
+
+                ModelState.AddModelError("", "Failed to update lecturer. Please try again.");
+                return View(lecturer);
             }
-
-            var content = new StringContent(JsonConvert.SerializeObject(lecturer), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PutAsync($"lecturers/{id}", content);
-
-            if (!response.IsSuccessStatusCode)
+            catch (Exception ex)
             {
-                return StatusCode((int)response.StatusCode);
+                _logger.LogError(ex, "Error updating lecturer");
+                return View(lecturer);
             }
-
-            return NoContent();
         }
 
-        // POST: api/Lecturer
-        [HttpPost]
-        public async Task<ActionResult<Lecturer>> PostLecturer(Lecturer lecturer)
+        // GET: Lecturer/Delete/{id}
+        public async Task<IActionResult> Delete(string id)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(lecturer), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync("lecturers", content);
+            if (string.IsNullOrEmpty(id))
+                return BadRequest("Lecturer ID is required");
 
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                return StatusCode((int)response.StatusCode);
+                var response = await _httpClient.GetAsync($"lecturers/{id}");
+                if (!response.IsSuccessStatusCode)
+                    return NotFound($"Lecturer with ID {id} not found");
+
+                var data = await response.Content.ReadAsStringAsync();
+                var lecturer = JsonConvert.DeserializeObject<Lecturer>(data);
+                return View(lecturer);
             }
-
-            var data = await response.Content.ReadAsStringAsync();
-            var createdLecturer = JsonConvert.DeserializeObject<Lecturer>(data);
-
-            return CreatedAtAction("GetLecturer", new { id = createdLecturer.LecturerId }, createdLecturer);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching lecturer for deletion");
+                return RedirectToAction(nameof(Index));
+            }
         }
 
-        // DELETE: api/Lecturer/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLecturer(string id)
+        // POST: Lecturer/Delete/{id}
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var response = await _httpClient.DeleteAsync($"lecturers/{id}");
-
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                return StatusCode((int)response.StatusCode);
-            }
+                var response = await _httpClient.DeleteAsync($"lecturers/{id}");
 
-            return NoContent();
+                if (response.IsSuccessStatusCode)
+                    return RedirectToAction(nameof(Index));
+
+                _logger.LogWarning($"Failed to delete lecturer with ID: {id}");
+                ModelState.AddModelError("", $"Failed to delete lecturer with ID {id}. Please try again.");
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error deleting lecturer");
+                return RedirectToAction(nameof(Index));
+            }
         }
     }
 }

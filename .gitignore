@@ -74,4 +74,24 @@ _[Ss]cripts
 *.dll
 *.nupkg
 *.ncrunchsolution
-*.dot[Cc]over
+*.dot[Cc]over'.vs/' 
+
+# Visual Studio metadata files
+.vs/
+*.suo
+*.futdcache.v2
+*.vsidx
+
+# Build and output files
+/bin/
+*/bin/
+*/obj/
+*.dll
+*.exe
+*.pdb
+*.sourcelink.json
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+*.apphost.exe
+*.ref/
+*.refint/

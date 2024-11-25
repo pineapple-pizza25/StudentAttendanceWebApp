@@ -3,44 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\controllers\\classroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\controllers\\classroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\views\\classroom\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\views\\classroom\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\views\\classroom\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\views\\classroom\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\views\\classroom\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\views\\classroom\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\views\\classroom\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\views\\classroom\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\models\\classroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\models\\classroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\models\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\models\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\models\\lecturer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\models\\lecturer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|c:\\users\\admin\\desktop\\pinapplepizza25\\studentattendancewebapp\\studentattendancewebapp\\models\\classroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDF94BC8-3C5A-4980-8088-BB97D1D25DF8}|StudentAttendanceWebApp\\StudentAttendanceWebApp.csproj|solutionrelative:studentattendancewebapp\\models\\classroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,139 +34,90 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "StudentController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Controllers\\StudentController.cs",
-              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Controllers\\StudentController.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Controllers\\StudentController.cs",
-              "RelativeToolTip": "StudentAttendanceWebApp\\Controllers\\StudentController.cs",
-              "ViewState": "AgIAANEAAAAAAAAAAAAAAPMAAAABAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Classroom.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Classroom.cs",
+              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Models\\Classroom.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Classroom.cs",
+              "RelativeToolTip": "StudentAttendanceWebApp\\Models\\Classroom.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T16:13:33.526Z",
+              "WhenOpened": "2024-11-25T18:19:05.424Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Student.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Student.cs",
-              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Models\\Student.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Student.cs",
-              "RelativeToolTip": "StudentAttendanceWebApp\\Models\\Student.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAiwD8AAAABAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Course.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Course.cs",
+              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Models\\Course.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Course.cs",
+              "RelativeToolTip": "StudentAttendanceWebApp\\Models\\Course.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-24T14:47:30.038Z",
+              "WhenOpened": "2024-11-25T18:19:28.534Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Student\\Index.cshtml",
-              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Views\\Student\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Student\\Index.cshtml",
-              "RelativeToolTip": "StudentAttendanceWebApp\\Views\\Student\\Index.cshtml",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAABQAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-24T18:41:53.167Z",
+              "DocumentIndex": 3,
+              "Title": "Lecturer.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Lecturer.cs",
+              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Models\\Lecturer.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Lecturer.cs",
+              "RelativeToolTip": "StudentAttendanceWebApp\\Models\\Lecturer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T18:19:35.745Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Lesson.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Lesson.cs",
+              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Models\\Lesson.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Lesson.cs",
+              "RelativeToolTip": "StudentAttendanceWebApp\\Models\\Lesson.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T18:19:41.544Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Classroom\\Delete.cshtml",
-              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Views\\Classroom\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Classroom\\Delete.cshtml",
-              "RelativeToolTip": "StudentAttendanceWebApp\\Views\\Classroom\\Delete.cshtml",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAgwC4AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-24T19:16:50.479Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Classroom\\Edit.cshtml",
-              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Views\\Classroom\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Classroom\\Edit.cshtml",
-              "RelativeToolTip": "StudentAttendanceWebApp\\Views\\Classroom\\Edit.cshtml",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAgwDYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-24T19:16:37.574Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Classroom\\Details.cshtml",
-              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Views\\Classroom\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Classroom\\Details.cshtml",
-              "RelativeToolTip": "StudentAttendanceWebApp\\Views\\Classroom\\Details.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAgwCwAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-24T19:02:47.86Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Classroom\\Index.cshtml",
-              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Views\\Classroom\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Classroom\\Index.cshtml",
-              "RelativeToolTip": "StudentAttendanceWebApp\\Views\\Classroom\\Index.cshtml",
-              "ViewState": "AgIAADgAAAAAAAAAAAAAAE8AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-24T19:01:29.115Z",
+              "Title": "Student.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Student.cs",
+              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Models\\Student.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Student.cs",
+              "RelativeToolTip": "StudentAttendanceWebApp\\Models\\Student.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T18:19:46.882Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ClassroomController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Controllers\\ClassroomController.cs",
-              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Controllers\\ClassroomController.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Controllers\\ClassroomController.cs",
-              "RelativeToolTip": "StudentAttendanceWebApp\\Controllers\\ClassroomController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA9AAAAAAAAAA==",
+              "Title": "Subject.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Subject.cs",
+              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Models\\Subject.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Subject.cs",
+              "RelativeToolTip": "StudentAttendanceWebApp\\Models\\Subject.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-24T18:45:08.364Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "StudentAttendanceWebApp\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-24T19:11:04.606Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Classroom.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Classroom.cs",
-              "RelativeDocumentMoniker": "StudentAttendanceWebApp\\Models\\Classroom.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\PinapplePizza25\\StudentAttendanceWebApp\\StudentAttendanceWebApp\\Models\\Classroom.cs",
-              "RelativeToolTip": "StudentAttendanceWebApp\\Models\\Classroom.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-24T18:44:50.457Z",
+              "WhenOpened": "2024-11-25T18:19:51.332Z",
+              "IsPinned": true,
               "EditorCaption": ""
             }
           ]

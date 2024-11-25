@@ -1,27 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 
-namespace StudentAttendanceWebApp.Models;
-
-public partial class Subject
+namespace StudentAttendanceWebApp.Models
 {
-    public string SubjectCode { get; set; } = null!;
+    [JsonObject(MemberSerialization.OptIn)]
+    public partial class Subject
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.String)]
+        [JsonProperty("subjectCode", NullValueHandling = NullValueHandling.Ignore)]
+        public string SubjectCode { get; set; } = null!;
 
-    public string SubjectName { get; set; } = null!;
+        [BsonElement("subjectName")]
+        [JsonProperty("subjectName", NullValueHandling = NullValueHandling.Ignore)]
+        public string SubjectName { get; set; } = null!;
 
-    public int NqfLevel { get; set; }
+        [BsonElement("nqfLevel")]
+        [JsonProperty("nqfLevel", NullValueHandling = NullValueHandling.Ignore)]
+        public int NqfLevel { get; set; }
 
-    public int Credits { get; set; }
+        [BsonElement("credits")]
+        [JsonProperty("credits", NullValueHandling = NullValueHandling.Ignore)]
+        public int Credits { get; set; }
 
-    public bool Deprecated { get; set; }
+        [BsonElement("deprecated")]
+        [JsonProperty("deprecated", NullValueHandling = NullValueHandling.Ignore)]
+        public bool Deprecated { get; set; }
 
-    public string CourseId { get; set; } = null!;
+        [BsonElement("courseId")]
+        [JsonProperty("courseId", NullValueHandling = NullValueHandling.Ignore)]
+        public string CourseId { get; set; } = null!;
 
-    public virtual Course Course { get; set; } = null!;
+        [BsonIgnore]
+        [JsonProperty("lessons", NullValueHandling = NullValueHandling.Ignore)]
+        public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
 
-    public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
+        [BsonIgnore]
+        [JsonProperty("studentCourses", NullValueHandling = NullValueHandling.Ignore)]
+        public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
 
-    public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
-
-    public virtual ICollection<StudentSubject> StudentSubjects { get; set; } = new List<StudentSubject>();
+        [BsonIgnore]
+        [JsonProperty("studentSubjects", NullValueHandling = NullValueHandling.Ignore)]
+        public virtual ICollection<StudentSubject> StudentSubjects { get; set; } = new List<StudentSubject>();
+    }
 }

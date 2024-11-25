@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\StudentAttendanceWebApp",
+    "\\StudentAttendanceWebApp\\Controllers",
     "\\StudentAttendanceWebApp\\Models",
     "\\StudentAttendanceWebApp\\Views",
     "\\StudentAttendanceWebApp\\Views\\Classroom",

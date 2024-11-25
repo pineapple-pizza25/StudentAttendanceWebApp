@@ -1,5 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<StudentAttendanceWebApp.Models.Subject>
+
 @{
+    ViewData["Title"] = "Subjects";
 }
+
+<h1>Subjects</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Subject Code</th>
+            <th>Subject Name</th>
+            <th>Deprecated</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var subject in Model)
+        {
+            <tr>
+                <td>@subject.SubjectCode</td>
+                <td>@subject.SubjectName</td>
+                <td>@subject.Deprecated ? "Yes" : "No"</td>
+                <td>
+                    <a class="btn btn-info" asp-action="Details" asp-route-code="@subject.SubjectCode">Details</a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-code="@subject.SubjectCode">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-code="@subject.SubjectCode">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-action="Create">Add New Subject</a>

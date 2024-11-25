@@ -1,25 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 
-namespace StudentAttendanceWebApp.Models;
-
-public partial class Lecturer
+namespace StudentAttendanceWebApp.Models
 {
-    public string LecturerId { get; set; } = null!;
+    [JsonObject(MemberSerialization.OptIn)]
+    public partial class Lecturer
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.String)]
+        [JsonProperty("lecturerId", NullValueHandling = NullValueHandling.Ignore)]
+        public string LecturerId { get; set; } = null!;
 
-    public string FirstName { get; set; } = null!;
+        [JsonProperty("firstName", NullValueHandling = NullValueHandling.Ignore)]
+        public string FirstName { get; set; } = null!;
 
-    public string LastName { get; set; } = null!;
+        [JsonProperty("lastName", NullValueHandling = NullValueHandling.Ignore)]
+        public string LastName { get; set; } = null!;
 
-    public string PhoneNumber { get; set; } = null!;
+        [JsonProperty("phoneNumber", NullValueHandling = NullValueHandling.Ignore)]
+        public string PhoneNumber { get; set; } = null!;
 
-    public string Email { get; set; } = null!;
+        [JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]
+        public string Email { get; set; } = null!;
 
-    public DateOnly DateOfBirth { get; set; }
+        [JsonProperty("dateOfBirth", NullValueHandling = NullValueHandling.Ignore)]
+        public string DateOfBirth { get; set; } = null!;
 
-    public int CampusId { get; set; }
+        [BsonIgnore]
+        [JsonProperty("campusId", NullValueHandling = NullValueHandling.Ignore)]
+        public int CampusId { get; set; }
 
-    public virtual Campus Campus { get; set; } = null!;
+        [BsonIgnore]
+        [JsonProperty("campus", NullValueHandling = NullValueHandling.Ignore)]
+        public Campus Campus { get; set; } = null!;
 
-    public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
+        [JsonProperty("lessons", NullValueHandling = NullValueHandling.Ignore)]
+        public List<Lesson>? Lessons { get; set; } = new List<Lesson>();
+
+       
+    }
 }

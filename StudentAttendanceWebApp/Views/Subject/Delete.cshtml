@@ -1,5 +1,27 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model StudentAttendanceWebApp.Models.Subject
+
 @{
+    ViewData["Title"] = "Delete Subject";
 }
+
+<h1>Delete Subject</h1>
+
+<div>
+    <h4>Are you sure you want to delete this subject?</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Subject Code</dt>
+        <dd class="col-sm-10">@Model.SubjectCode</dd>
+
+        <dt class="col-sm-2">Subject Name</dt>
+        <dd class="col-sm-10">@Model.SubjectName</dd>
+
+        <dt class="col-sm-2">Credits</dt>
+        <dd class="col-sm-10">@Model.Credits</dd>
+    </dl>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="SubjectCode" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+</form>
