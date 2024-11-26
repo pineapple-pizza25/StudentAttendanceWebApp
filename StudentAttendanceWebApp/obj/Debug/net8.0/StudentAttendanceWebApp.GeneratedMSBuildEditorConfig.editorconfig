@@ -146,6 +146,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVjdHVyZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/AddStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVzc29uXEFkZFN0dWRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/snmis/source/repos/StudentAttendanceWebApp/StudentAttendanceWebApp/Views/Lesson/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVzc29uXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Add Student to Lesson";
+    var lessonId = ViewBag.LessonId;
+}
+
+<h2>Add Student to Lesson</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success">
+        @ViewBag.SuccessMessage
+    </div>
+}
+
+<form asp-action="AddStudent" method="post">
+    <input type="hidden" name="Lesson.Id" value="@lessonId" />
+
+    <div class="form-group">
+        <label for="studentId">Student ID</label>
+        <input type="text" class="form-control" id="studentId" name="studentId" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Student</button>
+</form>
+
+<a asp-action="Details" asp-route-id="@lessonId" class="btn btn-secondary mt-3">Back to Lesson Details</a>

@@ -141,5 +141,70 @@ namespace StudentAttendanceWebApp.Controllers
                 return View("Error", ex);
             }
         }
+
+
+        [HttpGet]
+        public IActionResult AddStudent(string id)
+        {
+            ViewBag.LessonId = id; // Pass the lesson ID to the view
+            return View();
+        }
+
+        // POST: Handle form submission
+        [HttpPost]
+        public async Task<IActionResult> AddStudent(string id, string studentId)
+        {
+            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(studentId))
+            {
+                ViewBag.ErrorMessage = "Lesson ID and Student ID are required.";
+                return View();
+            }
+
+            var lessonId = id;
+
+
+            if (string.IsNullOrEmpty(studentId))
+            {
+                ViewBag.ErrorMessage = "Student ID cannot be null or empty.";
+                return View();
+            }
+
+            var apiUrl = $"{_httpClient.BaseAddress}{ApiBaseRoute}/{lessonId}/add-student";
+
+
+            if (string.IsNullOrEmpty(studentId))
+            {
+                ViewBag.ErrorMessage = "Student ID cannot be null or empty.";
+                return View();
+            }
+
+
+            
+            try
+            {
+                var requestBody = JsonConvert.SerializeObject(studentId);
+                var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+
+                // Send the POST request
+                var response = await _httpClient.PostAsync(apiUrl, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    ViewBag.SuccessMessage = "Student successfully added to the lesson.";
+                    return View();
+                }
+                else
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    ViewBag.ErrorMessage = $"API Error: {error}";
+                    return View();
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                ViewBag.ErrorMessage = $"Error connecting to the API: {ex.Message}";
+                return View();
+            }
+        }
     }
 }
