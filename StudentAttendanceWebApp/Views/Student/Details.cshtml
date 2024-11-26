@@ -1,22 +1,12 @@
 ﻿@model StudentAttendanceWebApp.Models.Student
 
 <div class="container">
-    <div class="sidebar">
-        <h2>INNOV8</h2>
-        <div class="sidebar-item"><a href="/StudentInformationPage">My Classes</a></div>
-        <div class="sidebar-item"><a href="/Students">Students</a></div>
-        <div class="sidebar-item"><a href="/Settings">Settings</a></div>
-        <div class="sidebar-item back-to-home">
-            <button onclick="location.href='/'" class="button">Back to Home</button>
-        </div>
-    </div>
+    <header class="header">
+        <h1>Student Details</h1>
+    </header>
 
-    <div class="main-content">
-        <div class="header">
-            <h1>Student Details</h1>
-        </div>
-
-        <div class="details-container">
+    <div class="content-wrapper">
+        <div class="student-info">
             <div class="detail-item">
                 <strong>First Name:</strong>
                 <p>@Model.FirstName</p>
@@ -49,19 +39,18 @@
         </div>
 
         <div class="form-actions">
-
             <form asp-action="CompleteRegistration" method="post">
-                <input type="hidden" name="studentId" value=@Model.StudentId />
+                <input type="hidden" name="studentId" value="@Model.StudentId" />
                 <button type="submit" class="btn btn-primary">Complete Registration</button>
             </form>
 
             <form asp-action="Attendance" method="get">
-                <input type="hidden" name="studentId" value=@Model.StudentId />
+                <input type="hidden" name="studentId" value="@Model.StudentId" />
                 <button type="submit" class="btn btn-primary">View Attendance</button>
             </form>
 
-            <button type="button" class="button edit-button" onclick="location.href='/Students/Edit/@Model.StudentId'">Edit</button>
-            <button type="button" class="button back-button" onclick="location.href='/Students'">Back to List</button>
+            <a href="/Students/Edit/@Model.StudentId" class="btn edit-button">Edit</a>
+            <a href="/Students" class="btn back-button">Back to List</a>
         </div>
     </div>
 </div>
@@ -72,51 +61,52 @@
         margin: 0;
         padding: 0;
         display: flex;
-        height: 100vh;
-        overflow: hidden;
+        min-height: 100vh; /* Change to min-height for better responsiveness */
+        background-color: #f1f1f1; /* Light background for better contrast */
     }
 
     .container {
         display: flex;
+        flex-direction: column; /* Stack elements vertically */
         width: 100%;
     }
 
-    .sidebar {
-        width: 220px;
-        background-color: #f1f1f1;
+    .header {
+        background-color: #4CAF50;
+        color: white;
         padding: 20px;
-        box-sizing: border-box;
-        position: fixed;
-        height: 100%;
-        left: 0;
-        display: flex;
-        flex-direction: column;
+        text-align: center;
     }
 
-    .sidebar h2 {
-        margin-top: 0;
+    .content-wrapper {
+        display: flex; /* Allow side-by-side content */
+        flex: 1; /* Take up remaining space after header */
+        padding: 20px;
     }
 
-    .sidebar-item {
-        padding: 10px;
-        margin-bottom: 10px;
+    .student-info {
+        flex: 1; /* Take up available space */
+        margin-right: 20px; /* Spacing between info and buttons */
+        background-color: #fff; /* White background for better readability */
+        padding: 20px;
+        border-radius: 5px; /* Gentle rounded corners */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     }
 
-    .sidebar-item a {
-        text-decoration: none;
-        color: black;
+    .detail-item {
+        margin-bottom: 15px;
     }
 
-    .sidebar-item:hover {
-        background-color: #ddd;
+        .detail-item strong {
+            display: block; /* Force strong element to new line */
+            margin-bottom: 5px;
+        }
+
+    .form-actions {
+        flex: 0 0 auto; /* Don't grow or shrink, take remaining space */
     }
 
-    .back-to-home {
-        margin-top: auto;
-        margin-top: 20px;
-    }
-
-    .button {
+    .btn {
         background-color: #4CAF50;
         color: white;
         border: none;
@@ -128,43 +118,11 @@
         margin: 10px 0;
         cursor: pointer;
         border-radius: 5px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s ease;
-        width: 100%;
     }
 
-    .button:hover {
-        background-color: #45a049;
-    }
-
-    .main-content {
-        margin-left: 220px;
-        padding: 20px;
-        width: calc(100% - 220px);
-        box-sizing: border-box;
-    }
-
-    .header {
-        background-color: #4CAF50;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .student-info {
-        margin-top: 20px;
-    }
-
-    .student-info p, .student-info ul {
-        margin: 10px 0;
-    }
-
-    .button-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 40px;
-    }
+        .btn:hover {
+            background-color: #45a049;
+        }
 </style>

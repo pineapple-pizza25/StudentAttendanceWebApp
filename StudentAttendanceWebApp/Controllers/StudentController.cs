@@ -174,7 +174,7 @@ namespace StudentAttendanceWebApp.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CompleteRegistration(string studentId)
         {
@@ -183,14 +183,11 @@ namespace StudentAttendanceWebApp.Controllers
                 // Log the start of the registration completion attempt
                 _logger.LogInformation("Attempting to complete registration for student {StudentId}", studentId);
                 System.Diagnostics.Debug.WriteLine("Attempting to complete registration for student {StudentId}");
-
                 var response = await _httpClient.PatchAsync(
                     $"students/{studentId}/complete-registration",
                     new StringContent(JsonConvert.SerializeObject(new { studentId }), Encoding.UTF8, "application/json")
                 );
-
                 var content = await response.Content.ReadAsStringAsync();
-
                 if (response.IsSuccessStatusCode)
                 {
                     _logger.LogInformation("Successfully completed registration for student {StudentId}", studentId);
@@ -198,13 +195,10 @@ namespace StudentAttendanceWebApp.Controllers
                     var result = JsonConvert.DeserializeObject<dynamic>(content, _jsonSettings);
                     return RedirectToAction(nameof(Index));
                 }
-
                 // Log the error response
                 _logger.LogWarning("Failed to complete registration for student {StudentId}. Status: {StatusCode}, Response: {Response}",
                     studentId, response.StatusCode, content);
                 System.Diagnostics.Debug.WriteLine("Attempting to complete registration for student {StudentId}");
-
-
                 // Handle different status codes
                 return response.StatusCode switch
                 {
@@ -224,6 +218,7 @@ namespace StudentAttendanceWebApp.Controllers
                 return StatusCode(500, "An unexpected error occurred");
             }
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Attendance(string studentId)
